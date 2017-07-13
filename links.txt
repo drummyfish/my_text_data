@@ -8,6 +8,8 @@ free/libre stuff:
   - https://www.wikidata.org/wiki/Wikidata:Main_Page            Wikidata, huge network of free data
   - https://github.com/trending                                 GitHub - trending repositories
   - http://freegamer.blogspot.hr/                               Freegamer, a blog about libre games
+  - https://opengameart.org/                                    Open Game Art, free game resources
+  - https://www.gnu.org/                                        GNU project, if you take freedom seriously
 
 non-free/libre resources:
   - https://www.imperial-library.info/                          TES game books
@@ -23,6 +25,7 @@ computer graphics:
   - https://www.youtube.com/user/keeroyz                        Two Minute Papers, great summaries of latest papers in CG
   - https://www.reddit.com/r/Simulated/                         reddit/r/Simulated, great videos of computer simulations
   - https://www.youtube.com/user/CGMeetUp                       CGMeetup, awesome breakdowns of VFX in movies, ads etc.
+  - https://www.turbosquid.com/                                 paid 3D models, good for quality inspiration
 
 other:
   - https://esolangs.org/wiki/Main_Page                         Esolang Wiki, funny and original programming languages
@@ -33,6 +36,7 @@ other:
   - http://en.uesp.net/wiki/Main_Page                           UESP Wiki, awesome Wiki about TES games
   - https://libraryofbabel.info/                                Library of Babel, all books that fit into 3200 chars
   - http://lolmythesis.com/                                     lol my thesis, students reword titles of their theses
+  - https://www.youtube.com/user/Vsauce                         VSauce, extremely interestinng videos
 
 mainstream:
   - https://www.wikipedia.org/                                  Wikipedia, the free encyclopedia
@@ -41,6 +45,7 @@ mainstream:
   - https://github.com/                                         GitHub, the place of free software 
   - https://sourceforge.net/                                    SourceForge, before GitHub took over
   - http://www.4chan.org/                                       4chan, where all the quality memes are born
+  - http://www.deviantart.com/                                  Deviant Art, sharing great art of all kind
 
 tools:
   - http://www.regexr.com/                                      regexr, great regexp online tool 
