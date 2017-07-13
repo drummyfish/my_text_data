@@ -37,8 +37,12 @@ other:
   - https://libraryofbabel.info/                                Library of Babel, all books that fit into 3200 chars
   - http://lolmythesis.com/                                     lol my thesis, students reword titles of their theses
   - https://www.youtube.com/user/Vsauce                         VSauce, extremely interestinng videos
+  - https://www.youtube.com/user/numberphile                    Numberphile, great math videos
+  - https://www.youtube.com/user/Computerphile                  Computerphile, great compuer videos
+  - https://xkcd.com/                                           xkcd, webcomic about math/programming
 
 mainstream:
+  - https://www.google.com/                                     Google, search
   - https://www.wikipedia.org/                                  Wikipedia, the free encyclopedia
   - https://www.youtube.com/                                    YouTube, videos
   - https://www.reddit.com/                                     reddit, the front page of the internet
