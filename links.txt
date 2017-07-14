@@ -1,4 +1,4 @@
-These are some interesting links I want to keep.
+These are some interesting links I want to keep. The goal is to collect links that pass the test of time (in terms of content quality, not webpage uptime).
 
 free/libre stuff:
   - https://commons.wikimedia.org/wiki/Main_Page                Wikimedia Commons, CC images
@@ -16,9 +16,10 @@ non-free/libre resources:
   - https://www.vg-resource.com/                                ripped game resources (models, sprites, sounds, ...)
 
 hacker culture:
-  - http://www.catb.org/esr/faqs/hacker-howto.html              How to become a hacker
-  - http://www.catb.org/~esr/jargon/html/index.html             The Jargon File
-  - http://wiki.c2.com/                                         C2 wiki
+  - http://www.catb.org/esr/faqs/hacker-howto.html              How to become a hacker, nice introduction
+  - http://www.catb.org/~esr/jargon/html/index.html             The Jargon File, a hacker's dictionary
+  - http://www.catb.org/~esr/writings/taoup/html/               The Art Of Unix Programming
+  - http://wiki.c2.com/                                         C2 wiki, the first ever wiki, nice read
   - http://www.mit.edu/~xela/tao.html                           The Tao of Programming
 
 computer graphics:
@@ -27,19 +28,15 @@ computer graphics:
   - https://www.youtube.com/user/CGMeetUp                       CGMeetup, awesome breakdowns of VFX in movies, ads etc.
   - https://www.turbosquid.com/                                 paid 3D models, good for quality inspiration
 
-other:
+fun/interesting:
   - https://esolangs.org/wiki/Main_Page                         Esolang Wiki, funny and original programming languages
   - https://en.wikipedia.org/wiki/Wikipedia:Unusual_articles    Wikipedia: list of unusual Articles 
   - https://en.wikipedia.org/wiki/List_of_lists_of_lists        Wikipedia: list of lists of lists
-  - https://simple.wikipedia.org/wiki/Main_Page                 Simple English Wikipedia, all stuff exaplained simply
-  - http://www.hellointernet.fm/                                Hello Internet, awesome podcast by CGP Grey and Brady Haran
-  - http://en.uesp.net/wiki/Main_Page                           UESP Wiki, awesome Wiki about TES games
   - https://libraryofbabel.info/                                Library of Babel, all books that fit into 3200 chars
   - http://lolmythesis.com/                                     lol my thesis, students reword titles of their theses
-  - https://www.youtube.com/user/Vsauce                         VSauce, extremely interestinng videos
-  - https://www.youtube.com/user/numberphile                    Numberphile, great math videos
-  - https://www.youtube.com/user/Computerphile                  Computerphile, great compuer videos
+  - http://uncyclopedia.wikia.com/wiki/Main_Page                Uncyclopedia, much funny encyclopedia
   - https://xkcd.com/                                           xkcd, webcomic about math/programming
+  - http://www.wtfpl.net/                                       WTFPL, the ultimately free license
 
 mainstream:
   - https://www.google.com/                                     Google, search
@@ -52,4 +49,13 @@ mainstream:
   - http://www.deviantart.com/                                  Deviant Art, sharing great art of all kind
 
 tools:
-  - http://www.regexr.com/                                      regexr, great regexp online tool 
+  - http://www.regexr.com/                                      regexr, great regexp online tool
+
+other:
+  - https://simple.wikipedia.org/wiki/Main_Page                 Simple English Wikipedia, all stuff exaplained simply
+  - http://www.hellointernet.fm/                                Hello Internet, awesome podcast by CGP Grey and Brady Haran
+  - http://en.uesp.net/wiki/Main_Page                           UESP Wiki, awesome Wiki about TES games
+  - https://www.youtube.com/user/numberphile                    Numberphile, great math videos
+  - https://www.youtube.com/user/Computerphile                  Computerphile, great compuer videos
+  - https://www.youtube.com/user/Vsauce                         VSauce, extremely interestinng videos
+  
