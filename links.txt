@@ -1,4 +1,4 @@
-These are some interesting links I want to keep. The goal is to collect links that pass the test of time (in terms of content quality, not webpage uptime).
+These are some interesting links I want to keep. The goal is to collect quality links that pass the test of time (in terms of content quality, not webpage uptime).
 
 free/libre stuff:
   - https://commons.wikimedia.org/wiki/Main_Page                Wikimedia Commons, CC images
@@ -12,8 +12,9 @@ free/libre stuff:
   - https://www.gnu.org/                                        GNU project, if you take freedom seriously
 
 non-free/libre resources:
-  - https://www.imperial-library.info/                          TES game books
+  - http://web.archive.org/                                     browse the archived Internet throughout the ages
   - https://www.vg-resource.com/                                ripped game resources (models, sprites, sounds, ...)
+  - https://www.imperial-library.info/                          TES game books
 
 hacker culture:
   - http://www.catb.org/esr/faqs/hacker-howto.html              How to become a hacker, nice introduction
