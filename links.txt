@@ -3,6 +3,7 @@ These are some interesting links I want to keep. The goal is to collect quality 
 free/libre stuff:
   - https://commons.wikimedia.org/wiki/Main_Page                Wikimedia Commons, CC images
   - https://www.gutenberg.org/                                  Project Gutenberg, public domain e-books 
+  - https://en.wikisource.org/wiki/Category:Works               Wikisource, books and texts under free licenses
   - https://www.blendswap.com/                                  Blender models/files under CC
   - http://osgameclones.com/                                    Open Source Game Clones
   - https://www.wikidata.org/wiki/Wikidata:Main_Page            Wikidata, huge network of free data
@@ -19,7 +20,7 @@ non-free/libre resources:
 hacker culture:
   - http://www.catb.org/esr/faqs/hacker-howto.html              How to become a hacker, nice introduction
   - http://www.catb.org/~esr/jargon/html/index.html             The Jargon File, a hacker's dictionary
-  - http://www.catb.org/~esr/writings/taoup/html/               The Art Of Unix Programming
+  - http://www.catb.org/~esr/writings/taoup/html/               The Art Of Unix Programming, very nice text about Unix
   - http://wiki.c2.com/                                         C2 wiki, the first ever wiki, nice read
   - http://www.mit.edu/~xela/tao.html                           The Tao of Programming
 
@@ -52,6 +53,7 @@ mainstream:
 
 tools:
   - http://www.regexr.com/                                      regexr, great regexp online tool
+  - https://repl.it/                                            repl.it, online interpreters for many programming langs
 
 other:
   - https://simple.wikipedia.org/wiki/Main_Page                 Simple English Wikipedia, all stuff exaplained simply
@@ -60,5 +62,4 @@ other:
   - http://en.uesp.net/wiki/Main_Page                           UESP Wiki, awesome Wiki about TES games
   - https://www.youtube.com/user/numberphile                    Numberphile, great math videos
   - https://www.youtube.com/user/Computerphile                  Computerphile, great compuer videos
-  - https://www.youtube.com/user/Vsauce                         VSauce, extremely interestinng videos
-  
+  - https://www.youtube.com/user/Vsauce                         VSauce, extremely interestinng videos 

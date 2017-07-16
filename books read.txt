@@ -33,3 +33,4 @@ These are the books I've read from start to finish.
 - Kitty Ferguson - Stephen Hawking: Jeho život a dílo
 - Stephen Hawking - Stručná historie času
 - Linus Torvalds & David Diamond - Just for Fun
+- Sam Williams & Richard Stallman - Free as in Freedom 2.0: Richard Stallman's Crusade for Free Software
