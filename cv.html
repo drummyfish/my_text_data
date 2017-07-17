@@ -1,0 +1,417 @@
+<!---
+  Personal CV, Miloslav Číž
+
+  This is my personal CV made with HTML/JS/CSS. To generate PDF, open
+  with browser and print with software printer.
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+  <head>
+    <title> CV </title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <meta charset="UTF-8">
+
+    <style>
+      a
+        {
+          font-style: italic;
+          border-bottom: 1px dotted black;
+        }
+
+      body
+        {
+          width: 210mm;
+          height: 297mm;
+          font-family: "Open Sans", sans-serif;
+          margin: 0;
+          padding: 0;
+        }
+
+      .content
+        {
+          padding: 0 1.3cm;
+          height: 243mm;
+        }
+
+      .dim
+        {
+          opacity: 0.3;
+        }
+ 
+      .meta
+        {
+          font-size: 3mm;
+          color: gray;
+          position: absolute;
+          top: 30mm;
+          left: 16mm;
+        }
+
+      .header
+        {
+          font-size: 10mm;
+          padding: 0 0.8cm;
+          margin-left: 0.5cm;
+          border-left: 10px solid grey;
+        }
+
+      .header span
+        {
+          vertical-align: middle;
+          display: inline-block;
+          width: 80%;
+        }
+
+      .icon-medium
+        {
+          width: 5mm;
+          height: 5mm;
+        }
+
+      .icon-small
+        {
+          width: 3mm;
+        }
+
+      .inside_body
+        {
+          width: 100%;
+          height: 100%;
+        }
+
+      .no-bullets
+        {
+          list-style-type: none;
+          padding-left: 4mm;
+        }
+
+      .photo
+        {
+          width: 2.5cm;
+          vertical-align: middle;
+        }
+
+      .section
+        {
+          width: 85%;
+          font-size: 7.5mm;
+          border-bottom: 1px dotted black;
+          margin: 6mm 0 6mm;
+        }
+
+      .section svg
+        {
+          margin-right: 5mm;
+        }
+
+      table
+        {
+          width: 100%;
+        }
+
+      td
+        {
+          vertical-align: top;
+        }
+
+      #td_interests
+        {
+          width: 45%;
+        }
+
+      ul
+        {
+          margin: 0;
+          padding-left: 7mm;
+          list-style-type: square;
+        }
+
+      .latex sup
+        {
+          font-size: 0.85em;
+          vertical-align: 0.15em;
+          margin-left: -0.36em;
+          margin-right: -0.15em;
+        }
+    </style>
+
+    <script>
+      var lang = 0;   // use this to set language (0: en, 1: cs)
+
+      // embedded SVG image data in format [width,height,data]:
+      var svg_image_person = [8,8,"<path d=\"M4 0c-1.1 0-2 1.12-2 2.5s.9 2.5 2 2.5 2-1.12 2-2.5-.9-2.5-2-2.5zm-2.09 5c-1.06.05-1.91.92-1.91 2v1h8v-1c0-1.08-.84-1.95-1.91-2-.54.61-1.28 1-2.09 1-.81 0-1.55-.39-2.09-1z\" \/>"];
+      var svg_image_book = [8,8,"<path d=\"M1 0c-.07 0-.13.01-.19.03-.39.08-.7.39-.78.78-.03.06-.03.12-.03.19v5.5c0 .83.67 1.5 1.5 1.5h5.5v-1h-5.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h5.5v-5.5c0-.28-.22-.5-.5-.5h-.5v3l-1-1-1 1v-3h-3z\" \/>"];
+      var svg_image_graph = [8,8,"<path d=\"M7.03 0l-3.03 3-1-1-3 3.03 1 1 2-2.03 1 1 4-4-.97-1zm-7.03 7v1h8v-1h-8z\" \/>"];
+      var svg_image_image = [8,8,"<path d=\"M0 0v8h8v-8h-8zm1 1h6v3l-1-1-1 1 2 2v1h-1l-4-4-1 1v-3z\" \/>"];
+      var svg_image_puzzle = [8,8,"<path d=\"M3 0c-.28 0-.54.1-.72.28-.18.18-.28.44-.28.72 0 .28.18.48.28.72.03.06.03.16.03.28h-2.31v6h2.31c0-.12-.01-.22-.03-.28-.1-.24-.28-.44-.28-.72 0-.28.1-.54.28-.72.18-.18.44-.28.72-.28.28 0 .54.1.72.28.18.18.28.44.28.72 0 .28-.18.48-.28.72-.03.06-.03.16-.03.28h2.31v-2.31c.12 0 .22.01.28.03.24.1.44.28.72.28.28 0 .54-.1.72-.28.18-.18.28-.44.28-.72 0-.28-.1-.54-.28-.72-.18-.18-.44-.28-.72-.28-.28 0-.48.18-.72.28-.06.03-.16.03-.28.03v-2.31h-2.31c0-.12.01-.22.03-.28.1-.24.28-.44.28-.72 0-.28-.1-.54-.28-.72-.18-.18-.44-.28-.72-.28z\" \/>"];
+      var svg_image_star = [16,16,"<g transform=\"scale(2)\"> <path d=\"M4 0l-1 3h-3l2.5 2-1 3 2.5-2 2.5 2-1-3 2.5-2h-3l-1-3z\" \/> <\/g>"];
+      var svg_image_star_half = [16,16,"<g transform=\"scale(2)\"> <path d=\"M4 0l-1 3h-3l2.5 2-1 3 2.5-2 2.5 2-1-3 2.5-2h-3l-1-3z\" style=\"opacity:0.3\" \/> <path d=\"M 4,0 3,3 0,3 2.5,5 5,3 z\"\/> <\/g>"];
+
+      var svg_image_envelope = [16,12,"<path d=\"M0 0v1l4 2 4-2v-1h-8zm0 2v4h8v-4l-4 2-4-2z\" transform=\"scale(1.5) translate(0 0.2)\" />"];
+      var svg_image_link = [16,12,"<path d=\"M5.88.03c-.18.01-.36.03-.53.09-.27.1-.53.25-.75.47a.5.5 0 1 0 .69.69c.11-.11.24-.17.38-.22.35-.12.78-.07 1.06.22.39.39.39 1.04 0 1.44l-1.5 1.5c-.44.44-.8.48-1.06.47-.26-.01-.41-.13-.41-.13a.5.5 0 1 0-.5.88s.34.22.84.25c.5.03 1.2-.16 1.81-.78l1.5-1.5c.78-.78.78-2.04 0-2.81-.28-.28-.61-.45-.97-.53-.18-.04-.38-.04-.56-.03zm-2 2.31c-.5-.02-1.19.15-1.78.75l-1.5 1.5c-.78.78-.78 2.04 0 2.81.56.56 1.36.72 2.06.47.27-.1.53-.25.75-.47a.5.5 0 1 0-.69-.69c-.11.11-.24.17-.38.22-.35.12-.78.07-1.06-.22-.39-.39-.39-1.04 0-1.44l1.5-1.5c.4-.4.75-.45 1.03-.44.28.01.47.09.47.09a.5.5 0 1 0 .44-.88s-.34-.2-.84-.22z\" transform=\"scale(1.5) translate(0 0.2)\" />"];
+      var svg_image_home = [16,12,"<path d=\"M4 0l-4 3h1v4h2v-2h2v2h2v-4.03l1 .03-4-3z\" transform=\"scale(1.5)\"/>"];
+      var svg_image_phone = [16,12,"<path d=\"M.19 0c-.11 0-.19.08-.19.19v7.63c0 .11.08.19.19.19h4.63c.11 0 .19-.08.19-.19v-7.63c0-.11-.08-.19-.19-.19h-4.63zm.81 1h3v5h-3v-5zm1.5 5.5c.28 0 .5.22.5.5s-.22.5-.5.5-.5-.22-.5-.5.22-.5.5-.5z\" transform=\"scale(1.5) translate(1)\"/>"];
+
+      function print_svg_image(svg_data, element_class)
+        {
+          document.write("<svg class=\"" + element_class + "\" width=\"" + svg_data[0].toString() + "\" height=\"" + svg_data[1].toString() + "\" viewbox=\"0 0 " + svg_data[0].toString() + " " + svg_data[1].toString() + "\">\n");
+          document.write(svg_data[2]);
+          document.write("</svg>\n");
+        }
+
+      function multilang_text(texts)
+        {
+          document.write(texts[lang]);
+        }
+
+      function print_stars(number)
+        {
+          var i, helper_class, half_star;
+
+          half_star = (number % 1) > 0.01;
+          number = Math.floor(number);
+
+          for (i = 0; i < 5; i++)
+            {
+              helper_class = "star";
+              var not_half_star = true;
+
+              if (i >= number)
+                {
+                  if (i == number && half_star)
+                    not_half_star = false;
+                  else
+                    helper_class += " dim";
+                }
+
+              if (not_half_star)
+                print_svg_image(svg_image_star,helper_class);
+              else
+                print_svg_image(svg_image_star_half,"");
+            }
+        };
+
+      function print_skills(skills_and_numbers)
+        {
+          var i, position, do_break, skill, number;
+
+          document.write("<table>");
+
+          position = 0;
+          do_break = false;
+
+          while (true)
+            {
+              document.write("<tr>");
+
+              for (i = 0; i < 3; i++)  // 3 column table
+                {
+                  try
+                    {
+                      skill = skills_and_numbers[position][0];
+                      number = skills_and_numbers[position][1];
+
+                      document.write("<td>" + skill + "</td><td>");
+                      print_stars(number)
+                      document.write("</td>");
+                    }
+                  catch(err) 
+                    {
+                      do_break = true;
+                      document.write("<td></td><td></td>");
+                    }
+
+                  position++;
+                }
+
+              if (do_break)
+                break;
+
+              document.write("</tr>");
+            }
+
+          document.write("</table>");
+        };
+
+      function todays_date_string()
+        {
+          var currentDate = new Date();
+          var day = currentDate.getDate();
+          var month = currentDate.getMonth() + 1;
+          var year = currentDate.getFullYear();
+           
+          return day.toString() + "." + month.toString() + "." + year.toString();
+        };
+
+      function on_load()
+        {
+          document.getElementById("meta_div").innerHTML = "CV generated on " + todays_date_string() + ", source @ github.com/drummyfish/my_text_data";
+        };
+
+    </script>
+
+  </head>
+
+  <body onload="on_load()">
+    <div class="inside_body">    
+      <div class="meta" id="meta_div"> </div>
+ 
+      <br />
+      <div class="header"> <span> Miloslav Číž </span> <img src="http://i.imgur.com/3RCl83b.png" class="photo" /> </div>
+      
+      <div class="content">
+        <div class="section"> 
+          <script> print_svg_image(svg_image_person,"icon-medium"); multilang_text(["personal info","osobní informace"]); </script>
+        </div>
+
+        <table>
+          <tr>
+            <td>
+              * 24.8.1990, Zlín <br /><br />
+              <script> multilang_text(["driver's license (B)","řidičský průkaz (B)"]); </script> <br />
+              <script> multilang_text(["member of Mensa ČR","člen Mensy ČR"]); </script> <br />
+            </td>
+
+            <td id="td_interests">
+              <script>
+                multilang_text([
+                  "interests: <br /> computer science, free and open-source, math, music, 2D/3D graphics, PC games, GitHub, football, pet animals",
+                  "zájmy:     <br /> informatika, svobodný a open-source software, matematika, hudba, 2D/3D grafika, PC hry, GitHub, fotbal, zvířata"
+                  ]);
+              </script>
+            </td>
+
+            <td>
+              <script> print_svg_image(svg_image_envelope,"") </script> <a> tastyfish@seznam.cz </a> <br />
+              <script> print_svg_image(svg_image_link,"") </script> <a> http://www.tastyfish.cz </a> <br />
+              <script> print_svg_image(svg_image_home,"") </script> Sušice 118, 68704, CZ <br />
+              <script> print_svg_image(svg_image_phone,"") </script> +420 606 586 442 <br />
+            </td>
+          </tr>
+
+        </table>
+
+        <div class="section"> <script> print_svg_image(svg_image_book,"icon-medium"); multilang_text(["education","vzdělání"]); </script> </div>
+
+          <ul>
+            <li> 2010: <script> multilang_text(["SPŠ Zlín, Technical Lyceum with computer science specialization","SPŠ Zlín, Technické lyceum se zaměřením na informatiku"]); </script> </li>
+            <li> 2014: <script> multilang_text(["Bachelor's degree (Bc), FIT BUT: Information Technology","titul Bc., FIT VUT: Informační technologie"]); </script> </li>
+            <li> 2017: <script> multilang_text(["Master's degree (Ing), FIT BUT: Computer Graphics and Multimedia","titul Ing., FIT VUT: Počítačová grafika a multimédia"]); </script> </li>
+          </ul>
+
+        <div class="section"> <script> print_svg_image(svg_image_graph,"icon-medium"); multilang_text(["work experience","pracovní zkušenosti"]); </script> </div>
+
+          <script> multilang_text(["no paid work experience","žádná placená pracovní zkušenost"]); </script>
+
+        <div class="section"> <script> print_svg_image(svg_image_image,"icon-medium"); multilang_text(["portfolio, achievements","portfolio, projekty"]); </script> </div>
+
+          <ul>
+            <li>
+              <script>
+                multilang_text([
+                  "Mage Rage: 1<sup>st</sup> place <a>itnetwork.cz</a> game development contest winner, 5000 lines of C++",
+                  "Mage Rage: 1. místo v herní vývojářské soutěži na <a>itnetwork.cz</a>, 5000 řádků v C++"]);
+              </script>
+            </li>
+
+            <li>
+              <script>
+                multilang_text([
+                  "Texturemaker: tool and library for designing procedural textures, 15000 lines of C/C++",
+                  "Texturemaker: nástroj a knihovna pro návrh procedurálních textur, 15000 řádků v C/C++"]);
+              </script>
+            </li>
+
+            <li>
+              <script>
+                multilang_text([
+                  "Lua subset interpreter: 5 man project, 5000 lines of C",
+                  "interpret podmnožiny Lua: 5členný projekt, 5000 řádků v C"]);
+              </script>
+            </li>
+
+            <li>
+              <script>
+                multilang_text([
+                  "over 30 more personal projects at <a>github.com/drummyfish</a>",
+                  "přes 30 dalších osobních projektů na <a>github.com/drummyfish</a>"]);
+              </script>
+            </li>
+
+            <li>
+              <script> multilang_text([
+                "multiple merit scholarships",
+                "opakovaná prospěchová stipendia"]);
+              </script>
+            </li>
+
+            <li>
+              <script> multilang_text([
+                "videos (<a>youtube.com/user/drummyfish</a>) and graphic art (<a>drummyfish.deviantart.com</a>)",
+                "videa (<a>youtube.com/user/drummyfish</a>) a grafická tvorba (<a>drummyfish.deviantart.com</a>)"]);
+              </script>
+            </li>
+          </ul>
+
+        <div class="section"> <script> print_svg_image(svg_image_puzzle,"icon-medium"); multilang_text(["skills","dovednosti"]); </script> </span> </div>
+ 
+        <script>
+          print_skills
+            (
+              [
+                ["Czech/Slovak", 5],
+                ["English", 4.5],
+                ["Spanish", 1],
+                ["C/C++", 4.0],
+                ["Python", 4.5],
+                ["JavaScript", 4],
+                ["Vim", 3.5],
+                ["Java", 3.5],
+                ["Haskell", 3],
+                ["HTML/CSS", 4.5],
+                ["PHP/SQL", 4],
+                ["Git", 4],
+                ["Linux/Windows", 4],
+                ["OpenGL", 4],
+                ["Photoshop/GIMP", 4.5],
+                ["Inkscape", 4.5],
+                ["Blender/3DS Max", 4.5],
+                ["Vim", 4],
+                ["HW/assembly", 3.0],
+                ["<span class=\"latex\">L<sup>a</sup>T<sub>e</sub>X</span>", 3.5],
+                ["MS/Open Office", 4.5],
+                ["UML", 2],
+                ["teamwork", 4],
+              ]
+            );
+        </script>
+
+        <br />
+          <script>
+           multilang_text([
+            "strong personal traits: &nbsp;&nbsp;&nbsp;honesty, timekeeping, creativity, politeness, openness",
+            "silné osobnostní stránky: &nbsp;&nbsp;&nbsp;poctivost, dochvilnost, kreativita, slušnost, otevřenost"
+            ]);
+          </script>
+        <br />
+        
+      </div>
+    </div> 
+  </body>
+
+</html>
