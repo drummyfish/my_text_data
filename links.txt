@@ -63,3 +63,4 @@ other:
   - https://www.youtube.com/user/numberphile                    Numberphile, great math videos
   - https://www.youtube.com/user/Computerphile                  Computerphile, great compuer videos
   - https://www.youtube.com/user/Vsauce                         VSauce, extremely interestinng videos 
+  - https://www.passmark.com/index.html                         CPU and GPU benchmarks, good when buying a new PC
