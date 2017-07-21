@@ -16,6 +16,7 @@ non-free/libre resources:
   - http://web.archive.org/                                     browse the archived Internet throughout the ages
   - https://www.vg-resource.com/                                ripped game resources (models, sprites, sounds, ...)
   - https://www.imperial-library.info/                          TES game books
+  - https://thepiratebay.org/                                   The Pirate Bay, information wants to be free
 
 hacker culture:
   - http://www.catb.org/esr/faqs/hacker-howto.html              How to become a hacker, nice introduction
