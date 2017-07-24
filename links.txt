@@ -32,7 +32,7 @@ computer graphics:
   - https://www.turbosquid.com/                                 paid 3D models, good for quality inspiration
 
 fun/interesting:
-  - https://esolangs.org/wiki/Main_Page                         Esolang Wiki, funny and original programming languages
+  - https://esolangs.org/wiki/Hello_world_program_in_esoteric_languages    Esolang Wiki, funny and original programming languages
   - https://en.wikipedia.org/wiki/Wikipedia:Unusual_articles    Wikipedia: list of unusual Articles 
   - https://en.wikipedia.org/wiki/List_of_lists_of_lists        Wikipedia: list of lists of lists
   - https://libraryofbabel.info/                                Library of Babel, all books that fit into 3200 chars
