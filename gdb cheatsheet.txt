@@ -1,0 +1,33 @@
+STARTING GDB:
+
+  gdb executable                start GDB and load given program (don't write args)
+  --tui                         terminal GUI
+
+IN GDB:
+
+  run args                      run current program with args
+  kill                          kill current program
+  q                             quit GDB
+
+  b                             add breakpoint at current position
+  b function                    add breakpoint at function
+  b file:line                   add breakpoint at line of file (without path, just filename)
+  save breakpoints filename     save breakpoints to file
+  source filename               load breakpoints from file  
+  delete                        delete all breakpoints
+
+  s                             step (executes next line, going into functions)
+  n                             next (executes next line without going into functions)
+  c                             continue execution until another breakpoint
+  u line                        executes until reaching given line
+  finish                        continue to end of function
+
+  bt                            prints backtrace
+  up                            goes up the stack
+  down                          goes down the stack
+  where                         print current file and line  
+  l                             print source code context
+  set listsize count            set length of context print
+
+  ctrl+x+a                      switch between GUI and CLI
+  ctrl+shift+l                  refresh GUI
