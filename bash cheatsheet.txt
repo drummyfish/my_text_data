@@ -404,7 +404,7 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
     dpkg-query action   query the dpkg database, possible actions are:
                           -l pattern        list packages matching name pattern
                           -L pkg            list files that the package installed
-    ffmpeg file         video editing (to between formats simply specify different extensions, e.g. ffmpeg -i a.mkv a.mp4)
+    ffmpeg file         video editing (to convert between formats simply specify different extensions, e.g. ffmpeg -i a.mkv a.mp4)
       -i file             input file, can be:
                             - a single filename
                             - multiple videos can be joined (concatenated) with -i "concat:video1|video2"
@@ -461,7 +461,7 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
 
   # comment
   # !/bin/bash
-  # put the above line at the strat of each script
+  # put the above line at the beginning of each script
   echo $?                          # $? holds the return value of the last command (0 = OK)
   echo $0                          # $0 holds the name of the sctipt, $1 is 1st param etc.
   
