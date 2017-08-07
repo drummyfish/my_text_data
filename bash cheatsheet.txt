@@ -1,0 +1,505 @@
+This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuff I use the most.
+
+========= UTILS ========
+  POSIX:
+    alias name=cmd      manage aliases
+    at time             schedule a job (commands from stdin) to be executed at later time by another shell, time is a set of separate arguments
+                        (NOT a single string) consisting of: now, midnight, noon, today, tomorrow, +, X hours, X minutes, X weeks, X years,
+                        (e.g. echo "touch somwhere/yes.txt" | at now + 1 minute)
+      -f file             read commands from given file instead of stdin
+    awk prog            process input text by matching records (lines by default) of fields (words by default) to patterns and executing specified actions
+                          pattern { action }, pattern can be for example /regexp/ (gawk only), action can be for example print var1 var2 etc. ($0 - whole
+                          record, $1 - 1st field, $2 - 2nd field, ...)
+      -F regexp           specify field separator
+    basename file       print base name of file (without path, with extension)
+    batch               schedule commands to execute (equivalent to "at -q b -m now")
+    bc                  calculator, prints result of input from stdin (supports +,-,*,/,^,float,brackets)
+    cal                 print calendar
+    cat f1 f2 ...       print files to stdout
+    cd dir              change directory
+    cksum f1 f2 ...     print checksum (CRC) of given files
+    chmod mode file     change file modes (mode: +x allows execution, -r disallows read etc, +w allows write etc.)
+      -R                recursive, apply to all directories and files inside them
+    cmp f1 f2           compare two files (write the first line number where they differ)
+    comm f1 f2          compares two files and writes three coluumns: uniqui lines in f1, unique lines in f2, lines common to f1 and f2
+      -1                  discard column 1 (lines unique for f1)
+      -2                  discard column 2 (lines unique for f2)
+      -3                  discard column 3 (lines common to f1 and f2)
+    cp src dst          copy file
+      -R                recursive, copy directories with subdirectories
+    cut                 from each line of the input print specified item (byte/character/record)
+      -b n1,n2,...        print n1th, b2th, ... byte of each line
+      -c n1,n2,...        print n1th, b2th, ... character of each line
+      -f n1,n2,...        print n1th, b2th, ... record of each line
+      -d c                delimiter used for records
+    date format         write date and time, format (e.g. "+%d.%m.%Y:%H:%M:%S") starts with + and contains format chars:
+                          %a %b    abbreviation of day of week/month
+                          %H %I    hours (24hour/12hour format)
+                          %M %S    minutes/seconds
+                          %Y %y    year (full/within century)
+                          %d %m    day of month/month
+    dd                  read input by blocks of given size (512b by default) and filter them in given way (last block is padded with zeros if needed)
+      bs=n                block size in bytes
+      skip=n              skip first n blocks before copying to output
+      count=n             copy only n blocks
+      conv=filter         apply filter:
+                            swab   swap each pair of input bytes (little endien vs big endien)
+                            icase  map to uppercase
+                            ucase  map to lowercase
+    df                  print free disk space
+      -k                  write in kB (1024 b) units
+    diff file1 file2    compare and show difference of two files
+      -b                  treat whitespaces at the end of the line as a single newline
+      -C n                show n lines of context in the output
+      f                   alternative output format
+    dirname file        print dirctory part of given path
+    dot file            execute script in current environment (. can also be used), returns the value returned by last command in script
+    du f1 f2 ...        print file size, by default lists all files in all subdirectories
+      -s                  print only total size of specified files
+      -L                  follow symbolic links
+    echo str1 str2 ...  print strings to stdout
+      -n                  don't print the final newline
+    ed                  text editor (line-based)
+    eval str1 str2 ...  concatenates the arguments (separates with space) and evaluates them as a command
+    exit                exit the shell
+    expr a b c ...      evaluates a logical expression formed from symbols (each is a separate argument, the expression is NOT a single string):
+                          int             integer (0 = false, other are true)
+                          | &             or (1st if it's not 0 else 2 if it's not 0 else 0), and (1st if none is 0 else 0)
+                          = != < > >= <=  comparisons
+                          + - * / %       integer math
+                          ( )             brackets, group expressions together
+    false               return false
+    file                determines and writes the file type (also takes a look at the content, e.g.: HTML UTF-8 file with long lines)
+    find path           recursively search for files
+      -name str           specifies the pattern to search for (e.g. *.txt)
+      -type               search only for specified file types (d - directory, f - regular file, l - symbolic link)
+      -maxdepth n         maximum depth of search
+      -L                  follow symbolic links
+    fc                  command history list (by default opens with editor)
+      -l                  list the commands (do not open with editor)
+      -n                  don't show command numbers
+      -r                  reverse the list
+      n                   show command with given offset from current (-1 = previous command etc.)
+    fold                reformats input to given width (replaces newlines with spaces and aligns to given width)
+      -w n                width of the output
+    getconf var         get the value of system config variable
+    getopts options var parse command line options, each time it's used it placed the next option passed to the shell to var (argument will be
+                        in OPTARG) and increments OPTIND variable, options is a string specifying recognized options (e.g. "ab:")
+    grep                search input for regular expresion
+      -e p1 p2 ...        specifies the regexp pattern to search for, it may contain:
+                            . * \? \+ [] ^ \|             normal regexp characters (any char, > 0, 1 or 0, > 1, set, set negation)
+                            ^ $                           anchors, match beginning and end of the line (^ anywhere else than at start is negation)                    
+                            [:alnum:][:alpha:][:punct:]   special classes of characters
+                            [:lower:][:upper:][:digit:]
+      -E                  use extended regexp fromat: \? \+ \{ \} \| \( \) will be unescaped
+      -i                  case insensitive search
+      -r                  recursive, search all files in all subdirectories of given path
+      -n                  write line number to each result
+      -q                  quiet, write nothing
+      -v                  invert search, match only lines NOT matching the patterns
+      -c                  count, find maximum of c results
+    head                print first n lines of the input
+      -n n                how many lines to print
+    iconv               convert text from one character encoding to another
+      -c                  leave out unconvertable characters
+      -f enc              inoput encoding (such as ISO-8859-15, UTF-8 etc.)
+      -t enc              output encoding
+    id                  print user identity (username, uid, gid etc.)
+    join f1 f2          performs join operation on relational database-like records in two files which must be sorted on joining fields, example of the file:
+                          alice  female
+                          bob    male
+                          frank  male
+      -t                  separator of records (<tab>, <space>, ...), default is <blank>s
+      -1 n                join on nth column of 1st file (n starts from 1)
+      -2 n                join on nth column of 2nd file
+    kill pid            terminate (or send other signal to) a process with given pid
+      -s signal           name of the signal to send (SIGKILL, SIGTERM, SIGQUIT, SIGABRT, SIGKILL, ...)
+    ls                  list files in current directory
+      -a                  all, list even hidden files
+      -l                  display in table format with file infos (modes, size, owner etc.)
+      -h                  show numbers in human readable format
+      -L                  follow symbolic links
+      -R                  recursive, list all files in all subdirectories
+      -1                  one file per line
+      -b                  escape nongraphics characters (spaces become "\ " etc.)
+    ln src dst          create link (hard links by default)
+      -s                  create symbolic link
+      -f                  force overwrites
+    locale              write local-specific information
+      -a                  write all available locales
+      -m                  write available character encodings               
+    make                build system for files created from other files based on a Makefile, specific target can also be given, makefile format consists of targets:
+                          target: dependcy_file1 dependcy_file2 ...
+                          <tab>command
+      -f                  specify makefile, default is "Makefile"
+      -i                  ignore errors of invoked commands
+    man cmd             display manual (documentation) of given command
+    mkdir dir1 dir2 ... create directories
+    more file           display file in scrollable way
+    mv src dst          move file (can also be used to rename file)
+      -f                  don't ask if a file should be overwritten
+    nl                  number lines
+      -i n                increment numbering by n
+      -n format           format: ln (left justified), rn (right justified), rz (right justified with leading zeros)
+      -s sep              separator used to separate line numbers and text (default <tab>)
+      -v n                start numbering from n
+      -w n                width, number of chars used for line numbers
+    nm file             display symbols in object file (.obj or executable), their type (upper: global, lower: local, a: absolute, d: data, t: text, U: undefined) and offsets
+      - t format          offset format: d - decimal, o - octal, x - hexadecimal
+    nohup cmd           launch cmd immune to SIGHUP signal (= terminal closed)
+    od                  write (dump) the input in hex-editor manner
+      -t format           format: type plus optional number of bytes to read the input by (e.g. d4), types are
+                            a   named char
+                            c   char
+                            d   signed decimal
+                            f   float
+                            o   octal
+                            x   hexadecimal
+      -j n                skip first n bytes of input
+      -N n                read n bytes of input
+      -v                  write complete output (otherwise * will be used to make it shorter)
+    paste f1 f2 ...     write files side-by-side
+      -d string           delimit the columns with given string (default <tab>)
+    patch file          apply changes (patch, produced by diff) from output to a file (will be modified)
+      -b                  save backups of modified files (with .orig extension)
+      -o file             write the patched file to the here specified file instead of the input file
+      -R                  reverse, patch the file thge other way (from newer to older version)
+    pr                  format input for printing on paper
+      +n                  start at nth page
+      -n                  produce n column output
+      -a                  if using columns, they'll be actually written by lines
+      -d                  double spaced output
+      -h text             header of the page (default is the file name)
+      -l n                number of lines on a page will be n
+      -t                  don't write the page header nor the five trailing spaces for each page
+      -w n                if columns are used, the width of each one will be n
+    printf form a1 a2 ... format input arguments (a1, a2, ...) in given way and print them, the form is string specifying the format with possible formating elements in format:
+                        %[flags][width][.precision]specifier, where each field has following possible values:
+                          flags: # (prefix with 0x, o etc.) 0 (left pad with 0s) <space> (preceed non-negative number with space) - (left justify)
+                          width: minimum number of characters to print
+                          precision: minimum number of digits (for integers) or decimal digits (for floats)
+                          specifier:
+                            d u      signed/unsigned dec int
+                            o        unsigned oct int
+                            x X      unsigned hex int (lower/upper case)
+                            f a      float (dec/hex)
+                            e        scientific notation (mantisa^exponent)
+                            g        shorter of %e or %f
+                            s c      string/character
+                            n        nothing
+    ps                  print processes
+      -A                  write all processes (by default only for current user and terminal)
+      -f                  full, display more info
+      -l                  long, display more info
+      -o format           specify format for output
+      -u userlist         write processes only of given users (uids or usernamers separated with commas)
+    pwd                 print working (current) directory
+    read var            read from stdin to variable
+    rm file             remove files or directories
+      -f                  force, do not prompt
+      -r                  recursive, remove directory with all its files and subdirectories
+    rmdir dir           removes directory
+    sed prog            filter input text by lines, mostly used for substitution of regexps which has prog in format:
+                        s/pattern/replacement/flags     where
+                          pattern is regexp pattern same as in grep
+                          replacement replaces the match, capture groups \1, \2, ..., \9 can be used (\1 = stuff inside first parentheses in pattern, ...)
+                          flags can include: g (global, replace all matches in record), i (case insensitive), binX (use X as delimiter instead of /)
+      -r                  use extended regular expressions (see grep)
+    sh                  shell, runs a new shell
+    sleep time          wait for given number of seconds
+    sort                sort input lines
+      -u                  unique, print duplicate lines only once
+      -f                  ignore case
+      -r                  reverse sort
+      -n                  numeric sort, compare numeric values of the string (e.g. 2 vs 10)
+    split file          split file into new files that will be named xaa, xab, xac etc.
+      -l n                split by n lines
+      -b n                split by n bytes (but do not split in middle of lines)
+    strings             find printable strings in input (good for looking for strings in binary files)
+      -a                  scan the whole file (otherwise only subportion may be scanned)
+      -n n                minimum length of the string (4 by default)
+      -t format           write offset for each string (d - decimal, o - octal, x - hexadecimal)
+    strip file          remove unnecessary information from input file (determines automatically, for example debugging symbols etc.)
+    stty                print or change the terminal settings
+      -a                  write all terminal settings
+      -g                  write all terminal settings in a format that can be given to another terminal to read
+    tail                print last n lines of input (similar to head)
+      -c n                count, print last n bytes
+      -n n                print last n lines
+    tee                 duplicate stdin to stdout
+    test str1 str2 ...  evaluate a bool expression and return appropriate code (0 = true, 1 = false), the expression consists of separate args (NOT a single string):
+                          -X file       true if given file is directory/regular file/symlink (X = d/f/h)
+                          -Y file       true if Y permission (Y = r,w,x) is set
+                          s1 op s2      true if two strings are equal (op: =) or not equal (op: !=)
+                          n1 op n2      compares two integers based on op: -eq: =, -ne: !=, -gt: >, -ge: >=, -lt: <, -le: <=
+                          e1 op e2      logical operation on two expressions based on op: -a: and, -o: or, ! and ( ) can also be used with expressions
+    time prog a1 a2 ... measure run time of program prog with arguments a1, a2, ... and print them
+    touch               create a new file or modify access and modification time to current time by "touching" it
+      -a                  change only access time
+      -m                  change only modification time
+    tr s1 s2            translate (substitute, replace) characters of input in following way:
+                          s1 = ABC..., s2 = XYZ... => each A will be replaced by X, B by Y, C by Z etc.
+                          special values can also be specified c1:
+                          [:alnum:] [:blank:] [:digit:] [:lower:] [:upper:] [:space:] [:alpha:] [:cntrl:] [:print:]
+                          in c2 only [:lower:] and [:upper:] can potentially be used
+      -d                  delete all occurences s1
+      -s                  replace sequences of repeating characters by a single character 
+      -C                  complement, replace all character NOT matching the characters in s1
+    true                return true
+    tsort               topological sort, print a TOTAL ordering consistent with given PARTIAL ordering from stdin (list of pairs of items that indicate ordering)
+                        example: echo "1 2 4 5 3 3" | tsort outputs 1 3 4 2 5 (one of multiple options)
+    tty                 print file name of the terminal connected to stdout
+    type cmd            writes a type of given command (e.g. keyword, built-in, alias etc.)
+    ulimit              print (or set) file size limit
+    umask               print (or set, if provided as argument) the default file permissions
+    unalias name        unset given alias
+      -a                  all, unset all aliases from current environment
+    uname               print system name, by default the OS name
+      -a                  all, write all info
+      -m                  hardware name
+      -n                  network node name
+      -r                  kernel release version
+      -s                  OS implementation name
+      -v                  kernel version
+    unexpand            convert spaces to tabs
+    uniq                convert sequences of repeating lines from input to a single line
+      -c                  prepend each line with count of how many times it's repeated
+      -d                  output only lines that are repeated
+      -f n                ignore first n words (separated by blanks) of each line
+      -s n                ignore first n chars of each line
+      -u                  write only unique lines (lines that would not be outputted by -d)
+    vi                  screen-oriented CLI text editor
+    wait pid1 pid2 ...  wait for completion of processes with given PIDs
+    wc                  word count, count and prints the number of words (or other units) of input
+      -c                  count bytes
+      -l                  count lines
+      -m                  count characters
+      -w                  count words
+    who                 print info about logged in users
+      -b                  write the time of the last system reboot
+      -H                  write table heading
+      -r                  write current run level of the init process
+      -t                  write the last change to the system clock
+      -u                  write idle time (time before any activity occured in the user's terminal) for users
+    xargs cmd a1 a2 ... reads input from user and passes it as arguments (along with a1, a2, ...)to given command
+      -E s                s will end the input of arguments (otherwise ctrl+d has to be used)
+      -n n                reads n arguments, executes the command and starts over
+      -I s                insert, command is executed after each line which is substituted for each argument a1, a2, ... that is equal to s
+      -p                  prompt, ask user before executing the command
+      -t                  trace, write the command being executed to stderr
+  UTIL-LINUX:
+    su                  opens a new shell as superuser (i.e. with admin privileges) or another user (if specified), asks for root password
+      -c cmd              execute only a single given command
+      -s shell            specify the shell to be opened
+      -p                  preserve the current environment (with some exceptions)    
+  GNU COREUTILS:
+    dir                 write the content of current directory, synonymous to "ls -C -b"
+    install
+    tac file1 file2     print files in reverse (files are printed in given order, but their lines are printed from end to start), opposite of cat
+    wget url1 url2 ...  download files from web to corresponding files, with advanced options
+      -i file             read URLs to download from given file or stdin (if file="-")
+      -O file             download all files to a single given file or stdout (if file="-")
+      -r                  recursive, download also pages linked to by downloaded pages up to depth given with -l
+      -l                  recursive depth (default is 5)
+      -L                  with recursive downloading, follow only relative links
+      -k                  convert links in downloaded files to point to other local downloaded files
+      -E                  forces the downloaded files to have appropriate extensions (such as .html) even if they don't on the web
+      -q                  quiet, don't write anything
+      -nc                 if the same file is downloaded, only one is kept (by default they will all be saved with extension .1, .2 etc.)
+      -nd                 no directories, download all files in the current directory even if downloading recursively
+      --header=str        send str in the HTTP header along with other options (allows sending cookies for example)
+      --post-data=str     use POST for HTTP requests and send specified data
+      -P                  directory prefix, specifies the output directory
+      -t n                set number of retries
+      -T secs             set the timeout, i.e. the number of seconds to wait before skipping download
+      -w secs             wait given number of seconds between downloads to lower the load on servers
+      --random-wait       wait randomly 0.5 to 1.5 * number of seconds specified with -w, to appear more like human
+      -B url              set base URL to be used when relative links are encountered
+  GNU BINUTILS:
+    as file1 file2 ...    assembler
+      -o obj                output .obj object file
+    ld obj1 obj2 ...      linker, combines multiple .obj object files into one executable file
+      -o file               output executable file
+      -lLib                 link library named libLib.a to the executable, usable any number of timesq
+    objdump a1 a2 ... o   display information from .obj object file (o), one or more of the following actions (a1, a2, ...) must be given:
+                            -a              display archive header
+                            -g              display debugging information
+                            -d              disassemble
+                            -S              display source code plus assembly if possible
+                            -t
+      -EB -EL               set big/little endien
+      -l                    show line numbers
+    readelf a1 a2 ... f   display information about ELF file (executable file format), one or more of the following actions (a1, a2, ...) must be given:
+                            -a              display all info
+                            -h              display the ELF file headers
+                            -l              display the program headers
+                            -S              display section headers
+                            -t              display section details
+                            -s --dyn-syms   display the symbol/dynamic symbol table
+  GNU OTHER:
+    gcc f1 f2 ...         GNU compiler collection front-end for compiling C and C++ programs (f1, f2, ...), can also link them (when given obj. files) etc.
+      -o file               specify the name of the output file)
+      -E                    preprocess (and output to stdout) but do not compile
+      -S                    compile (to assembly output) but do not assemble or link
+      -c                    compile and assemble (to .obj file) but do not link
+      -O -O2 -O3 -Os        optimize/optimize more/optimize even more/optimize for size
+      -std=S                specify language standard (c89, c98, c99, c++11, c++14, ...)
+      -g                    produce debugging symbols and other debugging info
+      -Wall                 turn on most warnings, good for avoiding mistakes
+      -Wextra               turns on even more warnings than -Wall
+      -pedantic             consider all warning errors
+      -Ldir                 also search given directory for libraries when linking
+      -Idir                 also search given directory for include files
+      -lLib                 link library named libLib.a, usable multiple times
+      -D symbol=x -u symbol consider symbol defined to x/undefined
+    gdb                   gnu CLI debugger
+    tar action f1 f2 ...  tape archiver, .tar archive (so called tarball) manager, action can be:
+                          -x                extract files from archive specified with -f
+                          -c                create new archive specified with -f (should end with .tar) and add files f1, f2, ... to it
+                          --delete          delete from archive
+                          -r                append files to archive
+                          -t                list the archive content
+                          -A                append, add files from one archive to another
+      -f archive          specify the archive file to work with
+      -z                  use gzip on the final tar archive (the extension should then be .tar.gz), this loslessly compresses the archive
+      -j                  use bzip2 on the final tar archive (the extension should then be .tar.bz2), this loslessly compresses the archive
+      -J                  use xz on the final tar archive (the extension should then be .tar.xz), this loslessly compresses the archive
+      -C dir              change directory to dir
+  MOREUTILS:
+    sponge              allows to read and modify the same file at the same time by preloading (soaking) the file, e.g.:
+                        cat a.txt | sponge | tr a b > a.txt
+  OTHER:
+    add-apt-repository ppa:rep  add (or remove) given repository (package source)
+      -y                  yes, answer yes to all queries
+    apt action          Debian package (.deb) management system (front-end, internally uses dpkg), combines apt-get and apt-cache (supports their
+                        actions) plus add more actions:
+                          full-upgrade      upgrade the system as a whole even if it means removing some packages
+                          show pkg          show information about given package
+                          list --installed  list installed packages
+    apt-cache action    query the apt cache, action can be:
+                          showpkg pkg       show information (version, dependencies, ...) about given package
+                          stats             display statistics about the cache
+                          search regex      search for package by regular expression
+                          depends pkg       show dependencies of given package
+                          rdepends pkg      show reverse dependencies of given package
+                          pkgnames          list all packages in the cache, optional prefix can be given
+    apt-get action      manipulate .deb packages, action can be:
+                          update            synchronize the package index from the online sources
+                          upgrade           install the newest versions of all packages currently installed (but don't remove or install new)
+                          dist-upgrade      like install but tries to be smarter and may delete some less important packages
+                          install p1 p2 ... install or upgrade specified package(s) including their dependencies, ".?*" regexps can be used
+                          remove p1 p2 ...  remove specified packages
+                          purge p1 p2 ...   remove specified packages AND their configuration files
+                          check             diagnostic tool, update the cache and check for broken dependencies
+                          download pkg      download given package to the current directory
+                          clean             clears out the local repository of retrieved packages
+                          autoremove        automatically removes packages that were installed as dependencies and are no longer needed
+                          changelog pkg     display changelog for given package
+    avconv              fork of ffmpeg, basically the same
+    dpkg action         base of the Debian package management system (of .deb packages), possible actions are:
+                          --install file    install package from given .deb file
+                          --unpack file     unpack given package file, but don't configure or install
+                          --remove pkg      remove package, except for its config files
+                          --purge pkg       remove package AND its config files
+    dpkg-query action   query the dpkg database, possible actions are:
+                          -l pattern        list packages matching name pattern
+                          -L pkg            list files that the package installed
+    ffmpeg file         video editing (to between formats simply specify different extensions, e.g. ffmpeg -i a.mkv a.mp4)
+      -i file             input file, can be:
+                            - a single filename
+                            - multiple videos can be joined (concatenated) with -i "concat:video1|video2"
+                            - video can be created from images i001.png, i002.png, ... using -i "i%03d.png"
+                            - to add audio to video specify one video file input and one audio file input
+      -framerate n        if making video from images, sets the framerate to n
+      -vcodec codec       set codec for output video: copy (the same as input),
+      -acodec codec       set codec for output audio: copy (the same as input),
+      -ss time            start time (for cutting), format: HH:MM:SS or S
+      -to time            end time (for cutting), format: HH:MM:SS or S
+      -t time             duration (for cutting), format: HH:MM:SS or S
+      -codecs             show all known codecs
+      -filters            show available filters
+      -vf                 video filter, complex graph filter can be constructed (separate filters with ",", filterchains with ";", labels [labelname],
+                          e.g.: "split [main][tmp]; [tmp] boxblur=5:1, crop=W:H:X:Y [tmp2]; [main][tmp2] overlay=x=X:y=Y"), some filters are:
+                            atadenoise, avgblur, blend, chromakey, codecview, colorkey, colorlevels, crop, deshake, drawgrid, drawtext, edgedetect,
+                            fade, hflip, negate, perspective, reverse, scale, showinfo, threshold, vflip 
+      -af                 audio filter, complex graph filter can be constructed as with -vf, some audio filters are:
+                            acrossfade, adelay, aecho, amix, atempo, chorus, equalizer, flanger, highpass, pan, treble, volume
+      -shortest           the output will be as long as the shortest input
+      -b:v n              set video bitrate (bits/s), human readable format can be used, e.g. 64000 = 64k
+      -b:a n              set audio bitrate (bits/s), human readable format can be used, e.g. 64000 = 64k
+    less                like more but with more functionality, doesn't have to read the whole file
+    vim                 vi improved, a better CLI text editor
+    pkg-config pkg      return metainformation about installed libraries (for automatically building gcc linker options), pkg is the
+                        short name of the library (e.g. libsdl2-dev => sdl2), doesn't work for all libraries (only the ones that install
+                        .pc file)
+                          --cflags          print preprocessor and compiler flags including the ones for dependencies
+                          --libs            like --cflags but prints linker flags
+                          --exists          check if info (.pc file) for the package exists, return appropriate code
+    sudo cmd a1 a2 ...  execute given command with given arguments  as superuser (i.e. with admin privileges) or another user, asks for current user's password
+      -b                  run in background
+      -E                  preserve the environment
+      -s shell            specify the shell to run the command with
+      -u user             run as specified user
+    valgrind program    dynamically analyses the program (by running it) to find memory leaks and similar bugs
+    which cmd           print location of (the executable of) the command
+    yum                 rpm package manager (Red Hat Linux, ...)
+
+  COMMON ARGUMENT MEANING:
+    -c -n                 count
+    -f --force            force, do not prompt
+    -h --help             print help and exit
+    -H                    follow symbolic links encountered in arguments and during processing
+    -i file               input file
+    -L                    follow symbolic links encountered during processing
+    -o file               output to given file
+    -R -r                 recursive, apply to all files and subdirectories recursively
+    -r -C                 reverse/complement, do the opposite
+    -v --version          print version and exit
+    -w                    width
+
+===== BASH LANGUAGE ====
+
+  # comment
+  # !/bin/bash
+  # put the above line at the strat of each script
+  echo $?                          # $? holds the return value of the last command (0 = OK)
+  echo $0                          # $0 holds the name of the sctipt, $1 is 1st param etc.
+  
+  function myfunc {                # function definition, parameters are in $1, $2, ...
+      local VAR=3                  # local variable definition
+      echo $VAR $1
+    }
+  
+  myfunc "abc"                     # function call
+  
+  if [[ $1 -eq 1 ]]; then          # if statement, the cond. is in "test" utility format
+    echo "a"
+  elif [[ $1 -gt 2 ]]; then
+    echo "b"
+  else
+    echo "c"
+  fi
+  
+  while [[ $i -lt 10 ]]; do        # while loop
+    echo $i
+    i=$(expr $i + 1)               # $(...) causes evaluation
+  done
+  
+  for c in "hello" "world"; do     # for loop
+    echo $c
+  done
+  
+  echo $RANDOM                     # random number in range 0 - 32767 (16 bit int)
+  
+  # redirections:
+  #   descriptors:
+  #     0                  stdin
+  #     1                  stdout
+  #     2                  stderr
+  #   redirections:
+  #                        N is a descriptor (e.g. 1)
+  #                        D is file name or &descriptor (e.g. &2)
+  #     [N]>D              redirect output from descriptor N to target D
+  #     [N]>>D             redirect output (append)
+  #     [N]<D              redirect input
+  #     c1 | c2            pipe, redirect output of command c1 to input of command c2
