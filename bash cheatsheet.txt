@@ -147,7 +147,7 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
     nm file             display symbols in object file (.obj or executable), their type (upper: global, lower: local, a: absolute, d: data, t: text, U: undefined) and offsets
       - t format          offset format: d - decimal, o - octal, x - hexadecimal
     nohup cmd           launch cmd immune to SIGHUP signal (= terminal closed)
-    od                  write (dump) the input in hex-editor manner
+    od                  write (dump) the input in hex-editor manner (see also hexdump)
       -t format           format: type plus optional number of bytes to read the input by (e.g. d4), types are
                             a   named char
                             c   char
@@ -288,13 +288,64 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
       -p                  prompt, ask user before executing the command
       -t                  trace, write the command being executed to stderr
   UTIL-LINUX:
+    column              formats the input into columns, by default considers each line of input a single cell (doesn't split in the middle of lines)
+      -c n                format the output for a display that is n characters wide
+      -t                  consider the file already being a table and pretty print it
+      -x                  fill columns first (from top to bottom, then from left to right), by default this is the other way around
+    colrm start end     remove columns from input formatted to columns (for example with column), column is a single character in row numbered from 1,
+                        end is optional, tab character increments the column counter to the next multiple of 8
+    eject name          eject removable media (floppy, usb disks etc.), name can be a mount point or just a name without path
+    fdisk device        manipulate disk partitions
+    findmnt             list all mounted filesystems as a tree
+    getopt              parse command line arguments, similar to xargs
+    hexdump file        dump file in octal, decimal or hexadecimal (in a hexeditor fashion)
+      -s n                skip first n bytes, can be entered as decimal, hexadecimal with "0X" prefix or octal with "0" prefix
+      -n n                display only n bytes
+      -C                  format: by bytes shown in hexa, offset in hexa, plus additional view of bytes as chars (classic hexeditor view)
+      -b                  format: by bytes shown in octal, offset in hexa
+      -c                  format: by bytes shown as chars, offset in hexa
+      -d                  format: by two bytes as decimal, offset in hexa
+      -o                  format: by two bytes as octal, offset in hexa
+      -x                  format: by two bytes as hexa, offset in hexa
+      -e format           specify custom format
+    last                show a list of last logged in users
+    lscpu               display information abou CPU (name, cores, architecture, cache sizes, flags, vendor ID, byte order, ...)
+    lslocks             list local system locks
+    lslogins            display known users in the system, their UIDs etc.
+    mount dev dir       mount filesystem to given directory
+      -t type             indicate filesystem type: ext, ext4, msdos, nfs, nfs4, ntfs, vfat, ...
+      -r                  mount read-only
+    rename p f1 f2 ...  rename multiple (for single file use mv) files (f1, f2, ...) accoordint to given patter (p) in sed format, e.g. 's/\e.txt$//' *.txt
+    script file         records the following work in terminal to given file which can later be replayed with scriptreplay (--timing has to be used for this)
+      --timing=file       record command timing into a separate file
+    scriptreplay file   replay terminal work recorded with script, timing file has to be provided along with the input file
+      -t file             timing file
     su                  opens a new shell as superuser (i.e. with admin privileges) or another user (if specified), asks for root password
       -c cmd              execute only a single given command
       -s shell            specify the shell to be opened
       -p                  preserve the current environment (with some exceptions)    
+    umount what         unmounts what (device or directory) previously mounted with mount
+    whereis what        print location of command, library, executable, man pages etc.
   GNU COREUTILS:
     dir                 write the content of current directory, synonymous to "ls -C -b"
-    install
+    fmt                 format input text file by paragraphs
+      -w n                format text to width of n characters
+      -t                  indent first line differently from the rest of the paragraph
+      -s                  only split long lines, do not refill
+      -c                  preserve indentation of first two lines (good for headings)
+      -g n                set gap size
+    env                 show environment variables and their values
+    install             copy files and set attributes
+    nice cmd a1 a2 ...  run command with different scheduling priority (nice value)
+      --adjustment=N      add N to the nice value (10 by default)
+    ptx                 create an index of words in the input text file, along with their context
+      -G                  traditional format
+      -A                  include page references
+      -R                  references on right
+      -T                  output in Tex format
+    seq first inc last  prints numbers from first to last by given increment
+      -w                  make the numbers have equal width by padding with 0s
+    stat file           display information about file
     tac file1 file2     print files in reverse (files are printed in given order, but their lines are printed from end to start), opposite of cat
     wget url1 url2 ...  download files from web to corresponding files, with advanced options
       -i file             read URLs to download from given file or stdin (if file="-")
@@ -315,6 +366,8 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
       -w secs             wait given number of seconds between downloads to lower the load on servers
       --random-wait       wait randomly 0.5 to 1.5 * number of seconds specified with -w, to appear more like human
       -B url              set base URL to be used when relative links are encountered
+    whoami              print the user's effective ID
+    yes str             repeatedly prints given string until killed (good for automatical confirmation)
   GNU BINUTILS:
     as file1 file2 ...    assembler
       -o obj                output .obj object file
@@ -411,8 +464,8 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
                             - video can be created from images i001.png, i002.png, ... using -i "i%03d.png"
                             - to add audio to video specify one video file input and one audio file input
       -framerate n        if making video from images, sets the framerate to n
-      -vcodec codec       set codec for output video: copy (the same as input),
-      -acodec codec       set codec for output audio: copy (the same as input),
+      -vcodec codec       set codec for output video: copy (the same as input), mpeg4, h264, vp8, mjpeg, png, ... 
+      -acodec codec       set codec for output audio: copy (the same as input), mp3, flac, ...
       -ss time            start time (for cutting), format: HH:MM:SS or S
       -to time            end time (for cutting), format: HH:MM:SS or S
       -t time             duration (for cutting), format: HH:MM:SS or S
@@ -425,8 +478,8 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
       -af                 audio filter, complex graph filter can be constructed as with -vf, some audio filters are:
                             acrossfade, adelay, aecho, amix, atempo, chorus, equalizer, flanger, highpass, pan, treble, volume
       -shortest           the output will be as long as the shortest input
-      -b:v n              set video bitrate (bits/s), human readable format can be used, e.g. 64000 = 64k
-      -b:a n              set audio bitrate (bits/s), human readable format can be used, e.g. 64000 = 64k
+      -b:v n              set video bitrate (quality, bits/s), human readable format can be used, e.g. 64k = 64000 
+      -b:a n              set audio bitrate (quality, bits/s), human readable format can be used, e.g. 64k = 64000
     less                like more but with more functionality, doesn't have to read the whole file
     vim                 vi improved, a better CLI text editor
     pkg-config pkg      return metainformation about installed libraries (for automatically building gcc linker options), pkg is the
@@ -435,11 +488,24 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
                           --cflags          print preprocessor and compiler flags including the ones for dependencies
                           --libs            like --cflags but prints linker flags
                           --exists          check if info (.pc file) for the package exists, return appropriate code
+    ssh user@server       open SSH client (remotely login to another shell), quit with "logout"
+      -X                    enamble X11 formwarding - remote GUI will be possible
     sudo cmd a1 a2 ...  execute given command with given arguments  as superuser (i.e. with admin privileges) or another user, asks for current user's password
       -b                  run in background
       -E                  preserve the environment
       -s shell            specify the shell to run the command with
       -u user             run as specified user
+    tree path           display the content of given directory and its subdirectories as a tree
+      -L n                set maximum depth to display to n
+      -H                  prints the output in HTML
+      -d                  list directories only
+      -f                  print full path for each file
+      -i                  don't format as a tree, just print the files
+      -l                  follow symbolic links
+      -P pattern          list only files matching given pattern
+      -I pattern          ignore files matching given pattern
+      -p                  print file type and permissions for each file
+      -s -h               print size of each file (-h prints in human readable format)
     valgrind program    dynamically analyses the program (by running it) to find memory leaks and similar bugs
     which cmd           print location of (the executable of) the command
     yum                 rpm package manager (Red Hat Linux, ...)
@@ -503,3 +569,5 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
   #     [N]>>D             redirect output (append)
   #     [N]<D              redirect input
   #     c1 | c2            pipe, redirect output of command c1 to input of command c2
+
+====== FILE SYSTEM =====
