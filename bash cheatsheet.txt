@@ -480,8 +480,25 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
       -shortest           the output will be as long as the shortest input
       -b:v n              set video bitrate (quality, bits/s), human readable format can be used, e.g. 64k = 64000 
       -b:a n              set audio bitrate (quality, bits/s), human readable format can be used, e.g. 64k = 64000
+    glxgears            displays 3D rotating gears in a new window using OpenGL, good for testing OpenGL functionality
+      -fullscreen         run in fullscreen
+      -info               dsiplay info about OpenGL (GPU, version, vendor, ...)
+    glxinfo             show exhausting information about OpenGL (GPU, version, vendor, extrensions, limits, ...)
+    ifconfig            configure or show network configuration (IP addresses, interfaces etc.)
     less                like more but with more functionality, doesn't have to read the whole file
+    nslookup            interactive (if no arguments are given, or if first one is "-") or noninteractively query DNS servers
+      -query=q            set type of query to q: A (IPv4), AAAA (IPv6), hinfo (host info), ...
     vim                 vi improved, a better CLI text editor
+    ping address        send ICMP ECHO_REQUEST over network (good for testing connection and latency), address is IP or domain address
+      -b                  allow pinging broadcast address
+      -c n                count, stop after sending n packets
+      -i sec              set interval, wait sec seconds between sending packets
+      -R                  record and print route (includes RECORD_ROUTE in the ICMP packets)
+      -s n                set packet size to n
+      -t ttl              set IP time to live
+      -w sec              deadline, end after given number of seconds
+      -W sec              wait given number of seconds for response
+    ping6               like ping, but uses IPv6
     pkg-config pkg      return metainformation about installed libraries (for automatically building gcc linker options), pkg is the
                         short name of the library (e.g. libsdl2-dev => sdl2), doesn't work for all libraries (only the ones that install
                         .pc file)
@@ -495,6 +512,10 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
       -E                  preserve the environment
       -s shell            specify the shell to run the command with
       -u user             run as specified user
+    traceroute address  trace and print the route the packets take in network when sent to given address
+      -w sec              set given numbers of seconds to wait fot the probe
+      -I                  use ICMP ECHO for tracing
+      -T                  use TCP SYN for tracing
     tree path           display the content of given directory and its subdirectories as a tree
       -L n                set maximum depth to display to n
       -H                  prints the output in HTML
@@ -557,6 +578,8 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
   
   echo $RANDOM                     # random number in range 0 - 32767 (16 bit int)
   
+  glxgears&                        # run in background
+
   # redirections:
   #   descriptors:
   #     0                  stdin
