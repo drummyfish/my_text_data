@@ -39,7 +39,7 @@ fun/interesting:
   - https://libraryofbabel.info/                                Library of Babel, all books that fit into 3200 chars
   - http://lolmythesis.com/                                     lol my thesis, students reword titles of their theses
   - http://uncyclopedia.wikia.com/wiki/Main_Page                Uncyclopedia, much funny encyclopedia
-  - http://www.survivorlibrary.com/                             everything you need to survive
+  - http://www.survivorlibrary.com/                             everything you need to survive, everything is public domain
   - https://xkcd.com/                                           xkcd, webcomic about math/programming
   - http://www.wtfpl.net/                                       WTFPL, the ultimately free license
 
