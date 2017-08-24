@@ -1,0 +1,190 @@
+This is Python-fu cheatsheet, more at:
+  https://www.gimp.org/docs/python/
+  https://developer.gimp.org/api/2.0/libgimp/index.html
+
+CLASSES:
+  gimp.Image - the whole image in one GIMP tab, composed of layers
+    .__init__(width, height, type)
+      create new image, type = RGB | GRAYSCALE | INDEXED
+    .active_layer
+    .add_layer(layer,position)
+    .base_type
+      type of image (RGB, INDEXED, ...)
+    .flatten()
+      returns images obtained by merging all visible layers
+    .filename
+    .height
+    .layers
+      list of layers
+    .lower_layer(layer)
+    .remove_layer(layer)
+    .resize(width, height, x, y)
+    .width
+
+  gimp.Layer - one layer of given image, is Drawable
+    .__init__(img, name, width, height, type, opacity, mode)
+    .add_alpha()
+    .height
+    .image
+    .mode
+    .name
+    .opacity
+    .resize(width, height, x, y)
+    .scale(h, w, origin)
+      scale layer, origin is either 0 (local) or 1 (image)
+    .translate(dx, dy)
+    .width
+
+  gimp.Drawable - something that can be drawn onto (layer, channel, ...)
+    .fill(type)
+      fill with given type: 0 (foreground), 1 (background), 2 (white), 3 (transparent), ...
+    .flush()
+    .is_colour
+  
+  gimp.Display - display for image
+    .__init__(img)
+      create new display for the image, gimp.displays_flush() HAS TO BE CALLED AFTER THIS
+
+MAIN OBJECT:
+  gimp - main object to work with, has these attributes:
+    .image_list()      lists opened image Objects
+    .displays_flush()
+    .pdb - procedure database of core GIMP functions that can be found in menus etc.,
+       procedures are accessed as
+
+         gimp.pdb["proc_name"]
+
+       to list all proc_names open Filters -> Python-Fu -> Console, type in
+
+         gimp.pdb.
+
+       and press tab, each procedure has the following attributes:
+        .proc_name          procedure name (= proc_name)
+        .proc_blurb         short description
+        .proc_help          longer description
+        .nparams            number of parameters
+        .nreturn_vals       number of return values
+        .params             parameter descriptions
+        .return_vals        return value descriptions
+    
+       to call a procedure, do
+
+         gimp.pdb["proc_name"](p1, p2, ...)    or    gimp.pdb.proc_name(p1, p2, ...)
+
+       some interesting methods are:
+         proc_name                          params
+         ------------------------------------------------------------------------------
+         "file_png_save"                    ...
+         "gimp_brightness_contrast"         drawable, bright, contrast
+           values are in range -127 to 127    
+         "gimp_blend"                       ...
+         "gimp_color_balance"               drawable, mode, lum, cyan_red, magenta_green, yellow_blue
+           mode is 0 (shadows), 1 (midtones) or 2 (highlights), lum is TRUE or FALSE
+         "gimp_context_set_foreground"      color
+         "gimp_convolve"                    ...
+         "gimp_drawable_get_pixel"          drawable, x, y
+         "gimp_drawable_offset"             drawable, wrap_around, fill_type, dx, dy
+           wrap_around is TRUE or FALSE, fill_type is 0 or 1
+         "gimp_drawable_set_pixel"          drawable, x, y, num_channels, value_tuple      
+           .update(x, y, w, h) of the drawable HAS TO BE CALLED AFTER this
+         "gimp_edit_clear"                  drawable
+         "gimp_edit_copy"                   drawable
+         "gimp_edit_cut"                    drawable
+         "gimp_image_get_active_drawable"   image
+         "gimp_hue_saturation"              drawable, hue_range, hue, lightness, satur
+           hue_range is 0 (all), 1, 2, 3, 4, 5, 6, hue is -180 to 180, lightness and satur is -100 to 100
+         "gimp_image_flip"                  image, type
+           type is 0 (horizontal) or 1 (vertical)
+         "gimp_image_convert_grayscale"     image
+           convert image to grayscale
+         "gimp_image_crop"                  image, w, h, x, y
+         "gimp_image_get_filename"          image
+         "gimp_image_get_layers"            image
+         "gimp_image_get_layer_position"    image, layer
+         "gimp_image_get_resolution"        image
+         "gimp_image_get_selection"         image
+         "gimp_image_list"                  image
+         "gimp_image_new"                   w, h, type
+           type is RGB, GRAY or INDEXED
+         "gimp_image_pick_color"            image, drawable, x, y, merged, avg, avg_radius
+           merged is TRUE (pick from all layers) or FALSE (just from drawable), avg is TRUE or FALSE
+         "gimp_image_resize"                image, w, h, x, y
+         "gimp_image_rotate"                image, type
+           type is 0 (90 deg), 1 (180 deg) or 2 (270 deg)
+         "gimp_image_scale"                 image, w, h
+         "gimp_image_select_rectangle"      type, x, y, w, h
+           type is 0 (add), 1 (substract), 2 (replace), 3 (intersect)
+         "gimp_invert"                      drawable
+         "gimp_item_is_layer"               item
+         "gimp_layer_copy"                  layer, add_alpha
+           add_alpha is TRUE or FALSE
+         "gimp_layer_delete"                layer
+         "gimp_layer_get_name"              layer
+         "gimp_layer_get_opacity"           layer
+         "gimp_layer_get_visible"           layer
+         "gimp_layer_new_from_visible"      image, dst_image, layer_name
+            dst_image is image to which the new layer will be added
+         "gimp_layer_resize"                layer, w, h, x, y
+         "gimp_layer_resize_to_image_size"  layer
+         "gimp_layer_scale"                 layer, w, h, x, y
+         "gimp_message"                     message
+           display message in the info bar
+         "gimp_perspective"                 drawable, interpol, x0, y0, x1, y1, x2, y2, x3, y3
+           interpol is TRUE or FALSE
+         "gimp_posterize"                   drawable, num_levels
+         "gimp_procedural_db_dump"          ...
+         "gimp_rotate"                      drawable, interpol, angle
+           interpol is TRUE or FALSE
+         "gimp_selection_all"               image
+           select all of the image              
+         "gimp_selection_invert"            image
+         "gimp_text"                        ...
+         "gimp_threshold"                   drawable, t_from, t_to
+         "gimp_transform_2d"                drawable, interpol, center_x, center_y, scale_x, scale_y, angle
+           interpol is TRUE or FALSE
+         "plug_in_gauss"                    mode, image, drawable, amount_x, amount_y, method
+           blur, mode is 0 (interactive) or 1, method is 0 (IIR) oe 1 (RLE)
+         "gimp_progress_init"               message, display
+           init a proggress bar, display can be None
+         "gimp_progress_pulse"
+         "gimp_progress_set_text"           message
+         "gimp_progress_update"             percentage
+         "gimp_progress_end"
+
+PLUGIN STRUCTURE:
+  #!/usr/bin/env python
+  # put this in ~/.gimp-2.8/plug-ins/test.py and chmod +x
+  from gimpfu import *
+
+  def func_to_be_called(imag,drawable,p1,p2):
+    print("do something here")
+
+  register(
+    "plugin_id_name",                        # can't contain spaces
+    "short description",
+    "long description",
+    "author",
+    "copyright holder",
+    "date",
+    "<Image>/Filters/Artistic/TestPlugin",        # can also start with <Toolbox>/
+    "RGB*, GRAY*",                                # supported types
+    [                                             # params
+      (PF_INT, "param_1", "First parameter",  3),
+      (PF_INT, "param_2", "Second parameter", 5)
+      # types: PF_INT, PF_FLOAT, PF_STRING, PF_COLOR, PF_IMAGE, PF_LAYER, PF_DRAWABLE, PF_BOOL, ...
+    ],
+    [],                                           # results
+    func_to_be_called)
+
+  main()
+
+
+
+
+
+
+
+
+
+
+
