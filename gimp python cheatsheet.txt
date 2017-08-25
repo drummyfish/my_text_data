@@ -98,6 +98,7 @@ MAIN OBJECT:
          "gimp_image_convert_grayscale"     image
            convert image to grayscale
          "gimp_image_crop"                  image, w, h, x, y
+         "gimp_image_get_active_layer"      image
          "gimp_image_get_filename"          image
          "gimp_image_get_layers"            image
          "gimp_image_get_layer_position"    image, layer
