@@ -58,7 +58,7 @@ MAIN OBJECT:
 
          gimp.pdb.
 
-       and press tab, each procedure has the following attributes:
+       and press tab (or go to Help -> Procedure Browser), each procedure has the following attributes:
         .proc_name          procedure name (= proc_name)
         .proc_blurb         short description
         .proc_help          longer description
@@ -104,6 +104,8 @@ MAIN OBJECT:
          "gimp_image_get_resolution"        image
          "gimp_image_get_selection"         image
          "gimp_image_list"                  image
+         "gimp-image-merge-down"            image, layer, type
+           type is 0 (expand), 1 (clip to image) or 2 (clip to bottom layer)
          "gimp_image_new"                   w, h, type
            type is RGB, GRAY or INDEXED
          "gimp_image_pick_color"            image, drawable, x, y, merged, avg, avg_radius
