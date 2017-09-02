@@ -1,0 +1,147 @@
+OpenSceneGraph cheatsheet suited to my personal needs, not complete yet.
+
+REFERENCE:
+  http://trac.openscenegraph.org/documentation/OpenSceneGraphReferenceDocs/
+  not so well documented
+
+GENERAL:
+  .osg native ASCII scene format, plugins for Blender
+
+COMPILING:
+  #include <osgDB/ReadFile>
+  #include <osgViewer/Viewer>
+  g++ -o main main.cpp `pkg-config --libs openscenegraph openscenegraph-osgViewer`
+
+ARCHITECTURE:
+  OSG is for graphics ONLY, it is divided into three main parts:
+    - Core:           basic functionality
+      - osg           main classes, scene graph, math, transforms, helpers, ...
+      - osgViewer     visualization of scene graph
+      - OpenThreads   cross-platform multithreading
+      - osgUtil       general purpose utility classes: scene-graph traversals, optimisation, tesselation, ...
+      - osgDB         scene/model saving/loading to/from files, other file operations and a plugin framework
+    - NodeKits        higher-level, advanced functionality
+      - osgAnimation
+      - osgFX
+      - osgParticle
+      - osgQt
+      - osgShadow
+      - osgTerrain
+      - osgText
+      - osgWidget
+      ...
+    - Plugins         plugins, mostly for file formats
+      - osgdb_3ds
+      - osgdb_bmp
+      - osgdb_ffmpeg
+      - osgdb_python  python scripting
+      - osgdb_sdl
+      - osgdb_svg
+      - osgdb_zip
+      ...
+
+CLASSES:
+  osg::VecNT                           general vector, N = 2, 3, 4, T = b (char), i (int), f (float), d (double), ub (uchar), ..., e.g. Vec3f
+    [i]                                access vector components
+    x() y() z() w()                    gets given vector component
+    r() g() b() a()                    same as x(), y(), z(), w()
+    T length()                         gets vector length
+    T normalize()                      normalizes the vector so that it has length of 1 and returns the previous length
+  osg::Matrix                          4x4 float/double matrix, for transforms etc.
+    (row,col)                          access matrix components
+    void decompose(tr, rot, sc, so)    decomposes the matrix into translation, scale and rotation
+    bool invert4x4(dst)                full matrix inverse
+    void makeIdentity()                sets the matrix to identity transform
+    void makeOrtho(l,r,b,t,near,far)   sets the matrix to orthogonal projection transform
+    void makePerspective(fov,r,n,f)    sets the matrix to perspective transform
+    void makeRotate(...)               sets the matrix to rotate transforms, multiple argument versions exist
+    void makeScale(vec3)               sets the matrix to scale transform
+    void makeTranslate(vec3)           sets the matrix to translate transform
+    set(a00, a01, a02, a03, a10, ...)  sets the matrix values by components
+    void setRotate(quat)               sets rotation
+    void setTrans(vec3)                sets translation
+    bool transpose(dst)                matrix transposition
+    static Matrix lookAt(pos,forw,up)  returns look at matrix
+    static Matrix perspective(...)     returns perspective matrix
+    static Matrix rotate(...)          returns rotation matrix
+    static Matrix scale(vec3)          returns scale matrix 
+    static Matrix translate(vec3)      returns translation matrix
+  osg::Quat                            quaternion, can be used to represent orientation in 3D space
+    [i]                                access vector components
+    Vec4d asVec4()                     converts quaternion to vector
+    void getRotate(...)                gets quaternion rotation
+    void makeRotate(...)               makes rotation quaternion
+    void set(x,y,z,w)                  set quaternion values
+  osg::Referenced                      object whose references are counted
+  | int ref()                          increases reference count
+  | int referenceCount()               get the number of references
+  | int unref()                        decreases reference count and if it is 0, deletes it (only call if you yourself also called ref() before)
+  |
+  \_osg::Object                          basic OSG object that needs cloning, names, custom data etc.
+    | Object(obj,type)                   copy constructor, copies given Object (obj) with given type (osg::CopyOp::{SHALLOW|DEEP}_COPY)
+    | char *className()                  returns the name of the class as string
+    | Object *clone(type)                clone object with given type (see copy constructor)
+    | string getName()                   get the object string name
+    | bool getUserValue(name,value)      gets the custom named value into value parameter
+    | bool isSameKindAs(obj*)
+    | void setName(name)                 sets the object string name
+    | void setUserValue(name,value)      set custom value
+    |
+    \_osg::Node                           scene graph node, uses Composite pattern
+    | | void addUpdateCallback(cb*)       appends update callback
+    | | BoundingSphere getBound()         computes (if needed) and gets bounding sphere of the node
+    | | int getNumParents()               gets number of parent nodes
+    | | Group* getParent(i)               gets ith parent
+    | | vector<Group*>getParents()        gets the parent nodes
+    | | StateSet *getStateSet()           gets OpenGL state set
+    | | void setStateSet(ss*)             sets OpenGL state set
+    | | void setUpdateCallback(cb*)       set callback called during update traversal
+    | |
+    | \_osg::Group                          scene node that has children
+    |   | bool addChild(child)              appends child
+    |   | int getNumChildren()              gets number of child nodes
+    |   | bool insertChild(i, child*)       adds child at given position
+    |   | bool removeChild(i, num=1)        removes ith child (or more children, specified with num)
+    |   | bool removeChild(child*)          removes specified child
+    |   | bool setChild(i, child*)          sets child at position i
+    |   | bool getChild(i)                  gets child at position i
+    |   |
+    |   \_osg::Geode                         geometry node, leaf node that groups Drawable objects together
+    |   |   bool addDrawable(dr)             appends drawable to the node
+    |   |   Drawable *getDrawable(i)         gets drawable at position i
+    |   |   int getNumDrawables()            gets number of drawables in the node
+    |   |   bool removeDrawable(dr*)         removes given drawable from the node
+    |   |
+    |   \_osg::Transform                     all children of transform are transformed by 4x4 matrix
+    |     | bool computeLocalToWorldMatrix(m)
+    |     | bool computeWorldToLocalMatrix(m)
+    |     | void setReferenceFrame(fr)       set reference frame either to parent (RELATIVE_FR) or absolute (ABSOLUTE_FR)       
+    |     |
+    |     \_osg::Camera                        transform that represents camera view
+    |     |   Matrix getViewMatrix()           gets the view transform matrix
+    |     |   void setProjectionMatrixAsPerspective(fov,r,near,far)    set camera projection matrix
+    |     |   void setRenderOrder(or)          set render order (PRE_RENDER, NESTED_RENDER, POST_RENDER)
+    |     |   void setViewMatrixAsLookAt(pos,forw,up)                  set camera position and look direction (look at)
+    |     |
+    |     \_osg::CameraView                    specifies a camera view that is part of the scene graph
+    |         double getFieldOfView()          gets camera fov
+    |         Quat getAttitude()               gets camera attitude (rotation and orientation)
+    |         vec3 getPosition()               gets camera position
+    |         void setAttitude(quat)           sets camera attitude (rotation and orientation)
+    |         void setFieldOfView(fov)         sets camera fov
+    |         void setPosition(vec3)           sets camera position
+    |
+    \_osgViewer::Viewer                   visualizes given scene in a platform independent window
+        void advance(dt)                  advances time of the scene (for animation)
+        double elapsedTime()              get time from start
+        void eventTraversal()             traverses the scene and processes events
+        void frame(dt)                    render a new frame, calls advance(), eventTraversal(), updateTraversal(), renderingTraversals()
+        int done()                        check if viewer work is done and main loop should quit
+        int run()                         run the main rendering loop, calls frame()
+        void realize()                    sets up the viewing window
+        void renderingTraversals()        traverses the scene and renders all nodes
+        void updateTraversal()            traverses the scene and updates all nodes
+
+
+
+

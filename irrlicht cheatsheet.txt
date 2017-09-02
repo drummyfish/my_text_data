@@ -1,0 +1,291 @@
+Irrlicht engine cheatsheet suited to my personal needs, not complete yet.
+
+REFERENCE:
+  http://irrlicht.sourceforge.net/docu/
+  very well documented
+
+COMPILING:
+  #include <irrlicht/irrlicht.h>
+  g++ -o main main.cpp -lIrrlicht     # linking
+
+ARCHITECTURE, BASICS:
+  - create scene nodes only via scene maneger (ISceneManager)
+  - call drop() on objects created with methods starting with create (e.g. createFlyCircleAnimator), but not others (e.g. addSphereSceneNode) 
+
+  Y  Z          rotation: around X (going down), around Y (going right), around Z
+  | /
+  |/__X
+
+  namespaces:
+    irr
+      core
+      scene
+      video
+      io
+      gui
+
+  Phong (per-pixel) shading is sadly only possible with EMT_NORMAL_MAP_SOLID, EMT_PARALLAX_MAP_SOLID or custom shaders.
+
+CLASSES, TYPES, FUNCTIONS:
+  IrrlichtDevice *irr::createDevice(driv,res,...)   creates device with given driver (video::EDT_OPENGL, ...), size etc.
+  
+  TN                                    numeric types, T is c/f/s/u (char/float/signed/unsigned), N is 8/16/32/64
+  irr::core::vectorXdT                  vector, X is 2/3, T is f/i (float/int)
+    vec...(x,y,z)                       constructor, creates a new vector
+    X Y Z                               vector components (members, not functions)
+    vec... crossProduct(vec...)         cross product
+    T dotProduct(vec...)                dot product
+    bool equals(vec...,tolerance)       check for equality within some error
+    void getAsNValues(T *array)         get the vector values into array, N is 3/4
+    T getDistanceFrom(vec...)           get distance from another vector
+    T getLength()                       get length of the vector
+    vec... invert()                     inverts the vector
+    vec... normalize()                  normalizes the vector (makes the length to be equal to 1)
+  irr::core::matrix4                    4x4 matrix, for transformations etc.
+    [i]                                 linear access to matrix elements
+    double *pointer()                   gets pointer to internal array
+  irr::core::aabboc3d                   axis-aligned bounding box
+  irr::core::list                       templated list
+    bool empty()                        check if the list is empty
+    iterator begin()                    get list start iterator                   
+  irr::core::iterator                   iterator
+    -> *                                access the item
+  irr::core::dimension2d                represents width and height couple
+    width height                        size, members
+  irr::core::rect                       rectangle
+    rect(x,y,x2,y2)                     constructor, make new rectangle
+    position2d getCenter()              get rectangle center
+    dimension2d getSize()               get the rectangle width and height
+    T getHeight()                       get height
+    T getWidth()                        get width
+  irr::video::SMaterial                 holds material parameters for renderer
+    SMaterial()                         constructor, creates white, lit material
+    bool getFlag(flag)                  get binary material flag (EMF_WIREFRAME, EMF_POINTCLOUD, EMF_LIGHTING, EMF_BACK_FACE_CULLING, EMF_FOG_ENABLE, ...)
+    bool isTransparent()                check if the material is transparent
+    void setFlag(flag,bool)             set material flag (EMF_WIREFRAME, EMF_POINTCLOUD, EMF_LIGHTING, EMF_BACK_FACE_CULLING, EMF_FOG_ENABLE, ...)
+    void setTexture(i,tex)              set ith texture
+    void setTextureMatrix(i,matrix)     set ith texture transformation matrix
+    SColor AmbientColor                 material ambient color
+    SColor DiffuseColor                 material diffuse color
+    SColor EmissiveColor                material light emissive color
+    SColor SpecularColor                material specular color
+    double Shininess                    material shininess
+    double Thickness                    thickness for line and point rendering
+
+  irr::IReferenceCounted                object whose references are counted
+  | bool drop()                         decrease reference count and delete if it is 0 (only call if you yourself called grab() or create...() function)
+  | int getReferenceCount()             get number of references
+  | void grab()                         increase reference count, call if you need the object for some time
+  |
+  \_irr::IrrlichtDevice                   device that displays the graphics
+  |   ICursorControl *getCursorControl()  get cursor control object to work with cursor (hide, move, ...)
+  |   bool isWindowActive()               check if the window is active (can be checked in main loop etc.)
+  |   bool run()                          performs a step of device run, increments timer etc., this should be in the main loop condition
+  |   void setWindowCaption(caption)      set the window caption
+  |   void setResizable(bool)             set whether the window should be resizable
+  |   void sleep(int ms)                  sleep for given time
+  |   IVideoDriver* getVideoDriver()      gets the video driver
+  |   ISceneManager* getSceneManager()    get the scene manager
+  |   IGUIEnvironment* getGUIEnvironment()  get the GUI environment 
+  |
+  \_irr::video::IVideoDriver              abstract driver for low-level drawing on some backend (OpenGL, DirectX, SW, ...)
+  |   bool beginScene(...)                has to be called before start of scene rendering
+  |   void draw3DTriangle(...)            draw 3D triangle
+  |   bool endScene()                     has to be called after the scene has been rendered
+  |   int getFPS()                        gets current FPS
+  |   void makeNormalMapTexture(tex)      makes normal map from heightmap, stores it in the alpha channel of the source texture
+  |
+  \_irr::gui::IGUIEnvironment             GUI manager, kind of 2D scene graph of IGUIElement objects
+  |   IGUIButton *addButton(rect,par*)    creates and inserts a new button, return pointer to the new button
+  |   void clear()                        remove all elements from the environment
+  |   void drawAll()                      draws all GUI elements
+  |   IGUIFont *getBuiltinFont()          get the pointer to the built-in font
+  |   IGUIElement *getHovered()           get the element that was last under the cursor
+  |   IGUIElement *getRootGUIElement()    get the root GUI element
+  |   IGUISkin *getSkin()                 get the current GUI skin
+  |   void setSkin(IGUISkin *skin)        set the new GUI skin
+  |
+  \_irr::video::ITexture                  represents a texture
+  |   hasAlpha()                          checks is alpha channel is present   
+  |
+  \_irr::scene::ISceneManager                                        manages a single scene, including resources
+  |   IAnimatedMeshSceneNode *addAnimatedMeshSceneNode(mesh*,par*)   create and add a new animated node from existing anim. mesh, returns its pointer, don't drop the node
+  |   IBillboardSceneNode *addBillboardSceneNode(par*)               create and add a new billboard node, returns its pointer, don't drop the node
+  |   ICameraSceneNode *addCameraSceneNode(par*)                     create and add a new camera to the scene and set it as active, don't drop it
+  |   ICameraSceneNode *addCameraSceneNodeFPS(par*,rotSp,movSp,id,   create and add a new FPS game-like camera controlled with mouse + keyboard
+  |                                   keymap,noVert,jumpSp,invert)
+  |   ICameraSceneNode *addCameraSceneNodeMaya(par*,rotSp,zoomSp,    create and add a new Maya-like camera controlled with mouse + keyboard
+  |                                   movSp,id,dist)
+  |   IMeshSceneNode *addCubeSceneNode(size,par*)                    create and add a new cube scene node, returns pointer to it, don't drop the node
+  |   ISceneNode *addEmptySceneNode(par*)                            create and add a new empty scene node (good for grouping nodes together)
+  |   ILightSceneNode *addLightSceneNode(par*,pos,color,radius)      create and add a new light scene node, don't drop the node
+  |   IMeshSceneNode *addMeshSceneNode(mesh*,par*,pos)               create and add a new mesh node from existing mesh, returns its pointer, don't drop the node
+  |   IMeshSceneNode *addOctreeSceneNode(mesh*,par*)                 create and add a new (even animated) mesh node with octree (good for big level meshes etc.)
+  |   IParticleSystemSceneNode *addParticleSystemSceneNode(...)      create and add new particle system scene node, don't drop the node
+  |   ISceneNode *addSkyBoxSceneNode(texTop,texBottom,...,par*)      create skybox (cube around camera) scene node from 6 textures
+  |   ISceneNode *addSkyDomeSceneNode(tex)                           create skydome (sphere around camera) scene node from a texture
+  |   IMeshSceneNode *addSphereSceneNode(radius,polycount,par*)      create and add a new sphere scene node, returns pointer to it, don't drop the node
+  |   IAnimatedMesh *addTerrainMesh(meshPath,tex,heightm,siz,height) create and add a new terrain scene node, don't drop the node
+  |   ISCeneNode *addWaterSurfaceSceneNode(...)                      create and add a new animated water surface scene node
+  |   ...* createCollisionResponseAnimator(world*,node*,...)         create a new ISceneNodeAnimatorCollisionResponse object
+  |   ISceneNodeAnimator *createDeleteAnimator(int timeMs)           create a new animator that deletes a node after given time, DO drop after use
+  |   ISceneNodeAnimator *createFlyCircleAnimator(cent,rad,speed)    create a new animator that flies a node in circle, DO drop after use
+  |   ISceneNodeAnimator *createFlyStraightAnimator(s,e,time,loop)   create a new animator that flies a node from start (s) point to end (e) point, DO drop after use
+  |   ISceneNodeAnimator *createFollowSplineAnimator(...)            create a new animator that flies a node along spline defined by points, DO drop adter use
+  |   ITriangleSelector *createOctreeTriangleSelector(mesh*,node*)   create a new ITriangleSelector object which selects triangles in optimized way with octrees, DO drop after use
+  |   ISceneNodeAnimator *createRotationAnimator(vector3df speed)    create a new animator that rotates a node, DO drop after use
+  |   ITriangleSelector *createTerrainTriangleSelector(ternode*)     create a new ITriangleSelector object that selects triangles from terrain node, DO drop after use
+  |   ISceneNodeAnimator *createTextureAnimator(textures,interval)   create a new animator that switches node textures in given time interval, DO drop after use
+  |   drawAll()                                                      draw the whole scene, call this in the main loop
+  |   ICameraSceneNode *getActiveCamera()                            get the scene active camera
+  |   SColorf getAmbientLight()                                      get scene ambient light color
+  |   IAnimatedMesh *getMesh(string filename)                        get pointer to animatable mesh, loads it from file if needed
+  |   ISceneNode *getRootSceneNode()                                 get the scene root node
+  |   IMeshManipulator* getMeshManipulator()                         get mesh manipulator for operations on geometry
+  |   ISceneNode *getSceneNodeFromId(int id)                         get scene node with given ID
+  |   ISceneNode *getSceneNodeFromName(name)                         get the first found node with given name
+  |   bool saveScene(filename)                                       save the scene to file
+  |   bool loadScene(filename)                                       load the scene from given file
+  |   void setActiveCamera(ICameraSceneNode *camera)                 set given camera node as active
+  |   void setAmbientLight(SColorf color)                            set the scene ambient color
+  |
+  \_irr::scene::IMeshManipulator          can perform various useful operations on meshes
+  |   SMesh *createMeshCopy(IMesh *mesh)  creates a copy of given mesh
+  |   IMesh *createMeshWelded(mesh*,err)  creates a copy of given mesh with welded vertices (nearby vertices within err are merged)
+  |   void flipSurfaces(mesh*)            flips triangles of given mesh
+  |   int getPolyCount(mesh*)             count mesh polygons
+  |   void makePlanarTextureMapping(m*)   create texture coordinates for given mesh using planar mapping
+  |   void recalculateNormals(m*,smooth)  recalculates all mesh normals
+  |   void scale(mesh*, vector3df)        scales given mesh
+  |   void scaleTCoords(mesh*,vector2df)  scales mesh texture coords
+  |   void transform(mesh*,matrix4)       apply transform to given mesh
+  |
+  \_irr::scene::IMesh                     holds object geometry
+  | | aabbox3d getBoundingBox()           get an axis-aligned bounding box of the mesh
+  | |
+  | \_irr::scene::SMesh                   static (non-animated) mesh
+  | |
+  | \_irr::scene::IAnimatedMesh           animated mesh
+  |     double getAnimationSpeed()        get the animation speed as FPS
+  |     int getFrameCount()               get the number of frames
+  |     IMesh *getMesh(frame)             get IMesh interface for given frame of animation
+  |
+  \_io::IAttributeExchangingObject        object whose attributes can be (de)serialized (from) to Attributes object
+    | void deserializeAttributes(atts*)   read attributes of the object
+    | void serializeAttributes(atts*)     save attributes of the object
+    |
+    \_irr::gui::IGUIElement               base class of GUI elements (buttons, checkboxes etc.)
+    |   void addChild(child *)            add child element
+    |   bool bringToFront(element *)      brings a child element to front
+    |   void draw()                       draw the element and its children
+    |   rect getAbsolutePosition()        get the absolute position
+    |   list getChildren()                get the element children
+    |   int getID()                       get the unique integer ID
+    |   IGUIElement *getParent()          get the element parent
+    |   rect getRelativePosition()        get relative element position
+    |   wchar *getText()                  get the element caption
+    |   bool isVisible()                  check if the element is visible
+    |   bool isEnabled()                  check if the element is enabled
+    |   void remove()                     remove this element from its parent
+    |   void removeChild(child *)         remove given child
+    |   void setEnabled(bool)             enable or disable the element
+    |   void setRelativePosition(rect)    set the element relative position
+    |   void setText(text)                set the element caption
+    |   void setVisible(bool)             show or hide the element
+    |
+    \_irr::scene::ISceneNodeAnimator      can be attached to scene nodes to automatically animated them in some way
+    | | void animateNode(node *,int ms)   animates given scene node
+    | | bool hasFinished()                check if the animator is finished
+    | | bool onEvent(SEvent event)        reimplement this to make the object react to mouse/keyboard events
+    | |
+    | \_irr::scene::ISceneNodeAnimatorCollisionResponse  makes the node detect and react to collisions (setPosition() is considered movement)
+    |     bool collisionOccurred()          check if there was a collision
+    |     bool isFalling()                  check if the node is falling
+    |     vector3df getGravity()            get gravity vector
+    |     void jump(double speed)           make the node jump
+    |     void setAnimateTarget(bool)       set whether the node should raect to collision (true by default)
+    |     void setCollisionCallback(cb*)    set a function to call on collision
+    |     void setEllipsoidRadius(vec)      set the collision elipsoid raidus
+    |     void setEllipsoidTranslation(vec) set the collision elipsoid translation
+    |     void setGravity(vector3df)        set the gravity vector
+    |     void setWorld(TriangleSelector *) set triangle selector to detect collisions
+    |
+    \_irr::scene::ISceneNode                scene node class, can have children
+      | ISceneNode(parent *,scene_mgr *)    constructor, creates a new node
+      | void addAnimator(anim *)            adds animator which will animate this node
+      | void addChild(ISceneNode child*)    adds child
+      | ISceneNode *clone()                 creates a clone of the node and its children
+      | vector3df getAbsolutePosition()     get absolute position in world coordinates
+      | list<...> getAnimators()            get list of the node animators
+      | aabbox3d getBoundingBox()           gets non-transformed, axis-aligned bounding box of the node
+      | list<ISceneNode*> getChildren()     gets the list of node children
+      | int getID()                         gets the node unique integer ID
+      | SMaterial getMaterial(i)            get the ith material of the node (i starts with 0)
+      | int getMaterialCount()              get the number of materials the node has
+      | char *getName()                     get the node name
+      | ISCeneNode *getParent()             get the node parent
+      | vector3df getPosition()             get the node position (relative to parent)
+      | vector3df getRotation()             get the node rotation (relative to parent) in degrees
+      | vector3df getScale()                get the node scale (relative to parent)
+      | ISceneManager *getSceneManager()    get the scene manager associated with the node
+      | bool isTrulyVisible()               checks if the node is visible, taking into account the parents' visibility
+      | void onAnimate(double timeMs)       this is called just before rendering the whole scene
+      | void remove()                       removes the node from the scene
+      | void removeAll()                    removes all children of this node
+      | void removeAnimators()              removes all animators from the node
+      | void removeChild(child *)           remove given child from the node
+      | void render()                       draw the node
+      | void setID(int id)                  set ID of the node, IDs are set automatically, no need to call this
+      | void setMaterialFlag(flag, bool val)  set given flag of all the node materials to given value (backface culling, lighting, mipmap, ...)
+      | void setMaterialTexture(int layer, tex*)  set texture for all the node materials
+      | void setMaterialType(type)          set type of all the node materials (solid, 2layered, lightmap, transparent, ...)
+      | void setName(name)                  set the node name
+      | void setParent(parent *)            set the new node parent
+      | void setPosition(vector3df new)     set the new node position (relative to parent)
+      | void setRotation(vector3df new)     set the new node rotation (relative to parent) in degrees
+      | void setScale(vector3df new)        set the new node scale (relative to parent)
+      | void setVisible(bool isVisible)     set whether the node will be visible (affects children)
+      | void setTriangleSelector(sel *)     set triangle selector for the node
+      |
+      \_irr::scene::IMeshSceneNode            scene node displaying a static mesh
+      |   IMesh *getMesh()                    get the mesh associated with the node
+      |   void setMesh(IMesh *mesh)           set mesh for the node
+      |
+      \_irr::scene::IAnimatedMeshSceneNode    scene node that is animated
+      |   double getAnimationSpeed()          get the animation speed (in fps)
+      |   int getEndFrame()                   get the last frame number
+      |   int getFrameNr()                    get the current frame number
+      |   IAnimatedMesh *getMesh()            get the mesh associated with the node
+      |   void setAnimationSpeed(double fps)  set the animation speed    
+      |   void setCurrentFrame(double)        set the current frame number
+      |   void setFrameLoop(double s, double e) set the range of the animation loop as frame numbers (from s to e)
+      |   void setLoopMode(bool doLoop)       set animation looping
+      |   void setMesh(IAnimatedMesh *mesh)   set the animated mesh for the node
+      |
+      \_irr::scene::ICameraSceneNode          scene node representing a camera
+      |   void bindTargetAndRotation(bool)    bind the camera rotation to the target set with setTarget()
+      |   double getAspectRatio()             get the aspect ratio
+      |   double getFarValue()                get the projection far value
+      |   double getFOV()                     get the field of view
+      |   double getNearValue()               get the projection near value
+      |   matrix getProjectionMatrix()        get the matrix used for the projection
+      |   vector3df getUpVector()             get vector pointing up from the camera point of view
+      |   bool onEvent(SEvent event)          reimplement this to make the camera react to mouse/keyboard events, also call setInputReceiverEnabled()
+      |   void setFOV(double fov)             set the field of view value
+      |   void setInputReceiverEnabled(bool)  enable/disable the receiving of input events
+      |   void setTarget(vector3df pos)       set given position as the camera look at target
+      |   setUpVector(vec3 up)                set given direction as the camera up vector
+      |
+      \_irr::scene::ILightSceneNode           dynamic light (turn on/off by setting visibility)
+      |   void enableCastShadow(bool)         enable/disable casting shadows, shadow nodes are additionally needed for shadows to work
+      |   E_LIGHT_TYPE getLightType()         get the light type (ELT_POINT, ELT_SPOT, ELT_DIRECTIONAL)
+      |   double getRadius()                  get the light radius
+      |   void setLightData(SLight data)      set the light data (color, falloff, ...) with SLight struct
+      |   void setLightType(type)             set the light type (ELT_POINT, ELT_SPOT, ELT_DIRECTIONAL)
+      |   setRadius(float)                    set the light radius, further objects won't be affected
+      |   setVisible(bool)                    set light visibility (turns it on/off)
+      |
+      \_irr::scene::IBillboardSceneNode       billboard scene node (rotates itself towards camera at all times)
+      |
+      \_irr::scene::ITerrainSceneNode         terrain supporting heightmaps, LOD etc.
+ 

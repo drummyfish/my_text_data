@@ -1,0 +1,79 @@
+Panda3D engine cheatsheet suited to my personal needs, not complete yet.
+
+REFERENCE:
+  https://www.panda3d.org/reference/1.9.4/python/annotated
+  very well documented
+
+GENERAL:
+  two native file formats: egg (ASCII, backward compatible), bam (binary, not-backwards compatible),
+  there are egg2bam and bam2egg programs
+
+  Z  Y      rotation order: HPR (high pitch roll, around Z around X around Y)
+  | /
+  |/__ X
+
+  with low performance try flattenLight(), flattenMedium(), flattenStrong()
+
+COMPILING:
+
+ARCHITECTURE:
+
+CLASSES:
+  panda3d.core.NodePath            references a scene node as a path in scene graph from the root, provides interface to manipulate the node
+    NodePath attachNewNode(node)   attach new node as a child of the referenced node, this is preferred way of adding nodes to scene graph
+    clear()                        set to empty path, no node will be referenced after this
+    detachNode()                   detaches the referenced node from its parent (but doesn't delete it)
+    int flattenLight()             applies transforms and similar things to vertices of the referenced node and its children, may improve performance
+    int flattenMedium()            more intense than flattenLight(), also gets rid of groups with one child, may improve performance
+    int flattenStrong()            more intense than flattenMedium(), also merges siblings, but may also lower performance by making one huge node
+    forceRecomputeBounds()         forces recomputation of all the bounding volumes of the referenced node and its children
+    getAncestor(i)                 get the ith ancestor (0 is the node itself) withing the node path
+    NodePath getChild(i)           get a nodepath of the nth child of the referenced node
+    LColor getColor()              get the color assigned to the referenced node
+    NodePath getCommonAncestor(np) return the NodePath of the lowest common ancestor
+    float getDistance(NodePath)    get distance between the referenced node and other NodePath's node
+    float getH() getP() getR()     methods for getting HPR rotation of the referenced node
+    LMatrix4 getMat()              get the transform matrix of the referenced node
+    str getName()                  get the referenced node's name
+    PandaNode getNode(i)           get the ith referenced PandaNode (0 is the node itself, 1 is the parent etc.)
+    int getNumChildren()           get the number of the referenced node's children
+    int getNumNodes()              get the number of nodes in the path
+    NodePath getParent()           get the NodePath shortened by one (equivalent to getAncestor(1)) 
+    LPoint3 getPos()               get the referenced node's position
+    LVector3 getPosDelta()         get the position difference against the previous frame (but must have been set with setFluidPos(...), not setPos(...))
+    float getSx() getSy() getSz()  get scale in given direction
+    Texture getTexture(stage)      get the referenced node'S texture with optional stage
+    
+
+  panda3d.core.MemoryBase          anything that can be allocated and deleted 
+  |
+  \_panda3d.core.ReferenceCount      object whose references are counted
+  | | int rgetRefCount()             get the number of references
+  | | ref()                          increment the reference count
+  | | bool unref()                   decrease the reference count  
+  \_panda3d.core.Namable             something that has a string name
+    | str getName()                  get the name
+    | setName(name)                  set the name
+    |
+    \_panda3d.core.PandaNode           scene graph node
+        __init__(name)                 create a new node
+        addChild(pandaNode c, int s)   add a new child node and sort it by s, if added twice, only one remains, use attachNewNode(...) instead of this
+        clearTransform()               clear the node transform to identity
+        PandaNode combineWith(another) tries to merge this node with another one and return the new node
+        copyAllProperties(PandaNode)   copies all attrs of this node (transform, effects, ...) to another node
+        RenderAttrib getAttrib(i)      get the ith render attribute (alpha, fog, ...) of the node
+        BoundingVolume getBounds()     return the bounding volume of the node, type of the volume can be checked with getBoundsType()
+        PandaNode getChild(i)          get the ith child node
+        [] getChildren()               get list of child nodes
+        int getInternalVertices()      get the number of vertices that will be rendered for the node (but not its children)
+        int getNestedVertices()        get the number of vertices that will be rendered for the node (including children)
+        int getNumChildren()           get the number of child nodes
+        int getNumParents()            get the number of parents
+        PandaNode getParent(i)         get ith parent node
+        [] getParents()                get parent node list
+        removeAllChildren()            removes all children of the node
+        removeChild(i)                 remove its child
+        setAttrib(RenderAttrib)        add given render attrib (alpha, fog, ...) to the node, if attrib of the same type exists, it is replaced
+        setBoundsType(type)            set the bounding volume type (BT_default, BT_best, BT_sphere, BT_box, BT_fastest)
+        setEffect(RenderEffect)        add given effect to affect the node rendering, if effect of the same type exists, it is replaced
+        stealChildren(PandaNode)       move all children from other node to this one

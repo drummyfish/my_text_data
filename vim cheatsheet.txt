@@ -1,0 +1,71 @@
+OUTSIDE VIM:
+  vim
+    file                 open file
+    -S [session file]    open session file
+  ~/.vimrc               vim configuration file, set keymappings, settings etc. here
+
+IN VIM:
+  navigation:
+    hjkl/arrows          move
+    Shift-arrows         move by words/pages
+    0                    move to the beginning of the line
+    $                    move to end of the line
+    nG                   move to line n (e.g. 10G), 0 = end of file
+    mx                   mark given line as "x"
+    'x                   go to line marked as "x"
+    M                    move cursor to the middle of the view
+    Ctrl-Y               move view up by one line
+    Ctrl-E               move view down by one line
+    zz                   center view on the current line
+ 
+  editing:
+    d                    delete (also copies, behaves like cut)
+    dd                   delete current line (also copes, behaves like cut, for no copy use: "_dd)
+    o                    add new line under
+    p                    paste after
+    P                    paste before
+    u                    undo
+    Ctrl-r               redo
+    v                    select (highlight) by characters
+    V                    select (highlight) by lines
+    Ctrl-v               select (highlight) block (visual)
+    y                    copy
+    yy                   copy (yank) curent line
+    >                    shift (indent) text right (to indent more use .)
+    <                    shift (indent) text to left (to indent more use .)
+    .                    repeat previous
+
+  search/replace:
+    /what                search for what (case sensitive)
+    /\cwhat              case insensitive search 
+     %:s/x/y/g           replace all "x"s with "y"s
+    *                    find word under the cursor
+    :noh                 unmark found results
+    n                    jump to next found result
+    N                    jump to previous found result
+
+  multiple files:
+    :hsplit              horizontally split window (close with q:)
+    :open file           open file (over the current one, better to use :tabedit)
+    :q                   quit, closes only the current file
+    :qa                  quit all
+    :q!                  quit without saving
+    resize +n            resize window height by n lones (- can also be used)
+    :save file           saves as file
+    :tabedit file        opens a file in tab
+    :vertical resize +n  resize window width by n columns (- can also be used)
+    :vsplit              vertically split window (close with :q)
+    :wa                  save all open files
+    :w                   save
+    Ctrl-ww              jump between split windows
+    Ctrl-PageDown        previous tab
+    Ctrl-PageUp          next tab
+
+  other:
+    :!                   show terminal
+    :!cmd                executes "cmd" in terminal
+    :mksession [file]    saves current sessions    
+    :set syntax=lang     set syntax to language (javascript, php, c, cpp, java, ...)
+    Ctrl-n               autocomplete
+    Ctrl-Q               fix vim freeze
+    Ctrl-z               suspend vim, temporarily go to terminal, get back by typing "fg"
