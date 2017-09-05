@@ -406,6 +406,7 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
       -lLib                 link library named libLib.a, usable multiple times
       -D symbol=x -u symbol consider symbol defined to x/undefined
     gdb                   gnu CLI debugger
+    history               show command history
     tar action f1 f2 ...  tape archiver, .tar archive (so called tarball) manager, action can be:
                           -x                extract files from archive specified with -f
                           -c                create new archive specified with -f (should end with .tar) and add files f1, f2, ... to it
@@ -449,6 +450,21 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
                           autoremove        automatically removes packages that were installed as dependencies and are no longer needed
                           changelog pkg     display changelog for given package
     avconv              fork of ffmpeg, basically the same
+    cowsay              show ASCII art cow (or other stuff) that says stuff from stdin
+      -n                  accept the input including whitespaces (good when combining with figlet etc.)
+      -e XY               set the cow's eyes to string XY (2 chars max)
+      -T XY               set the cow's tongue to string XY (2 chars max)
+      -l                  list all available cowfiles (files with different ASCII pictures that can be used)
+      -f cowfile          specify cowfile (ASCII art picture of animal to use)
+      -W N                set (only roughly) the text wrap width to N
+      -b                  borg (sci-fi glasses, = instead of eyes)
+      -d                  dead
+      -g                  greedy ($ instead of eyes)
+      -p                  paranoid (@ instead of eyes) 
+      -t                  tired (- instead of eyes)
+      -s                  stoned
+      -w                  wide awake (O instead of eyes)
+      -y                  young (. instead of eyes)
     dpkg action         base of the Debian package management system (of .deb packages), possible actions are:
                           --install file    install package from given .deb file
                           --unpack file     unpack given package file, but don't configure or install
@@ -480,6 +496,10 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
       -shortest           the output will be as long as the shortest input
       -b:v n              set video bitrate (quality, bits/s), human readable format can be used, e.g. 64k = 64000 
       -b:a n              set audio bitrate (quality, bits/s), human readable format can be used, e.g. 64k = 64000
+    figlet              display the input text as a cool ASCII art big text
+      -f fontfile         set font from figlet fontfile (.flf), to see font directory run with -I 2
+      -c                  centered text
+      -w N                set the output screen width
     glxgears            displays 3D rotating gears in a new window using OpenGL, good for testing OpenGL functionality
       -fullscreen         run in fullscreen
       -info               dsiplay info about OpenGL (GPU, version, vendor, ...)
@@ -512,6 +532,10 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
       -E                  preserve the environment
       -s shell            specify the shell to run the command with
       -u user             run as specified user
+    toilet              print input text as big ASCII art text, like figlet but with more features (UTF8, colors, filters, ...)
+      -f fontfile         set font from given figlet/toilet font file (.flf/.tlf), to see font directory run with -I 2
+      --gay               gay filter (characters are rainbow colored)
+      --metal             metal filter (character are gray/blue)
     traceroute address  trace and print the route the packets take in network when sent to given address
       -w sec              set given numbers of seconds to wait fot the probe
       -I                  use ICMP ECHO for tracing
