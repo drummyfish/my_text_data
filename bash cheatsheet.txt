@@ -473,6 +473,16 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
     dpkg-query action   query the dpkg database, possible actions are:
                           -l pattern        list packages matching name pattern
                           -L pkg            list files that the package installed
+    espeak              speech synthesizer, speaks the text from stdin
+      -f file             file to read the text from
+      -a N                amplitude, 0 - 200 (100 is default)
+      -g N                gap between words in 10s of ms
+      -k X                indicate capital letters, 1 = special sound, 2 = word "capital", 3 and higher = higher pitch (try -k20)
+      -p B                pitch, 0 - 99 (50 is default)
+      -s N                speed in words per minute (160 is default)
+      -v voice            set given voice file (for a list available voices use --voices)
+      -w file             write the input into given wav file
+      --voices            list available voices
     ffmpeg file         video editing (to convert between formats simply specify different extensions, e.g. ffmpeg -i a.mkv a.mp4)
       -i file             input file, can be:
                             - a single filename
@@ -500,6 +510,9 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
       -f fontfile         set font from figlet fontfile (.flf), to see font directory run with -I 2
       -c                  centered text
       -w N                set the output screen width
+    fortune             print random fortune cookie text
+      -l                  print long fortune
+      -s                  print short fortune
     glxgears            displays 3D rotating gears in a new window using OpenGL, good for testing OpenGL functionality
       -fullscreen         run in fullscreen
       -info               dsiplay info about OpenGL (GPU, version, vendor, ...)
