@@ -1,0 +1,156 @@
+Ogre3D engine cheatsheet suited to my personal needs, not complete yet.
+
+REFERENCE:
+  http://www.ogre3d.org/docs/api/1.9/
+  very well documented
+
+COMPILING:
+  #include <OGRE/Ogre.h> 
+  g++ main.cpp -o main `pkg-config --libs --cflags OGRE OIS` -lboost_system    # linking
+
+ARCHITECTURE, BASICS:
+
+  Y |
+    |__ X
+   /
+ Z/
+ 
+CLASSES, TYPES, FUNCTIONS:
+  Ogre::ColourValue                           represents a color
+    r g b a                                   color components
+    
+  Ogre::AnimableObject                        something that has values that can be animated (keyframed)
+  |
+  \_Ogre::MovableObject                       something that has a position in the scene, relative to its parent
+    | void detachFromParent()                 detaches the node from its parent
+    | AxisAlignedBox getBoundingBox()         get the object bounding box
+    | double getBoundingRadius()              get the radius of the object bounding sphere
+    | bool getCastShadow()                    check if the object casts a shadow
+    | Listener *getListener()                 get the object's current listener
+    | string getName()                        get the object's name
+    | Node *getParentNode()                   get the object's parent node
+    | SceneNode *getParentSceneNode()         get the object's parent scene node
+    | bool getReceivesShadow()                check if the object receives shadows
+    | bool getVisible()                       check if the object is visible
+    | AxisAlignedBox getWorldBoundingBox()    get the object's bounding box in world coordinates
+    | bool isAttached()                       check if the object is attached to a scene node
+    | bool isVisible()                        check if the object should be visible (depending on the flag set plus maximum visible distance)
+    | void setVisible(bool)                   set the object's visibility
+    |
+    \_Ogre::Entity                              movable instance of a mesh (geometry)
+    |   Entity *clone(string new_name)           clones the entity
+    |   int getCurrentLodIndex()                 get the currently used LoD level
+    |   Mesh *getMesh()                          get the associated mesh
+    |   void setMaterial(Material *)             set material to be used for the entity rendering
+    |   void setRenderingDistance(double)        set the distance after which the entity will no longer be rendered
+    |   void setMinPixelSize(double)             set the minimum pixel size at the screen (in both axes) below which the entity is no longer rendered
+    |
+    \_Ogre::Light                               represents a dynamic light source in the scene           
+    |   Vector3 getDerivedDirection()           get the direction of the light including parent transforms
+    |   ColourValue getDiffuseColour()          get the light diffuse color
+    |   Vector3 getDirection()                  get the light direction, only for directional and spotlights
+    |   Vector3 getPosition()                   get the light position
+    |   double getPowerScale()                  get the light power factor
+    |   ColourValue getSpecularColour()         get the light specular color
+    |   LightTypes getType()                    get the light type (LT_POINT, LT_DIRECTIONAL, LT_SPOTLIGHT)
+    |   bool isInLightRange(Sphere)             check if given sphere is included in the range of this light
+    |   void setDiffuseColour(r,g,b)            set the diffuse color of the light
+    |   void setDirection(x,y,z)                set the light direction, only for directional and spotlights
+    |   void setPosition(x,y,z)                 set the light position, only for point and spotlights
+    |   void setPowerScale(double)              set the power factor of the light (make it more/less bright)
+    |   void setType(LightTypes)                set the light type (LT_POINT, LT_DIRECTIONAL, LT_SPOTLIGHT)        
+
+
+  Ogre::AllocatedObject                       something that uses custom memory allocators when new / delete is called
+  |
+  \_Ogre::Root                                  the main class of the Ogre system to access other files
+  |   RenderWindow* createRenderWindow(title,w,h,full)    create the main rendering window
+  |   RenderWindow* initialise(auto_win,title)  initialize the system, can automatically create the window
+  |   SceneManager* createSceneManager(type)    create a new scene manager, type can be ST_GENERIC
+  |   void startRendering()                     start the automatic rendering loop   
+  |
+  \_Ogre::RenderSystem                          abstractly represents the low level GPU API (OpenGL, D3D, ...)
+  |   ... getCapabilities()                     get the system capabilities
+  |   string getName()                          get the name of the rendering system
+  |
+  \_Ogre::Node                                  abstract node
+  | | void addChild(Node *child)                sets given node as a child to this node
+  | | Vector3 convertLocalToWorldPosition(pos)  get the world space position
+  | | Node *createChild(string name)            create a new child node
+  | | SceneNode *createChildSceneNode(name)     create a new child scene node
+  | | Vector3 getPosition()                     get the scene node position
+  | | Vector3 getScale()                        get the scene node scale
+  | | void lookAt(Vector3 target, relative_to)  set the orientation to look at given point (relative_to is TS_LOCAL, TS_PARENT or TS_WORLD)
+  | | void pitch(angle_rad)                     rotate the node around the x axis (in local space)
+  | | void removeAllChildren()                  remove all node children
+  | | Node *removeChild(i)                      remove ith child
+  | | void resetOrientation()                   reset the node rotation
+  | | void resetToInitialState()                reset the translation, rotation and scale
+  | | void roll(angle_rad)                      rotate the node around the z axis (in local space)
+  | | int numChildren()                         get the number of children
+  | | void rotate(Vector3,angle_rad)            rotate the node around given axis by given angle
+  | | void scale(x,y,z)                         scales the node relatively to current scale
+  | | void setOrientation(w,x,y,z)              set rotation via quaternion parameters
+  | | void setPosition(x,y,z)                   set the node position
+  | | void setScale(x,y,z)                      set the node scale
+  | | void translate(x,y,z)                     move the node relatively to current position
+  | | void yaw(angle_rad)                       rotate the node around the y axis (in local space)
+  | |
+  | \_Ogre::SceneNode                             scene graph node
+  |   | SceneManager* getCreator()                get the scene manager that created this node
+  |   |
+  |   \_Ogre::BspSceneNode                          scene node that should be used with BspSceneManager
+  |   |
+  |   \_Ogre::OctreeNode                            scene node that is compatible with Octree class
+  |
+  \_Ogre::Animation                             general animation interface, has multiple tracks (AnimationTrack)
+  |
+  \_Ogre::SceneManager                          manages the organisation and rendering (culling etc.) of a scene
+    | void addListener(Listener *)              add a listener whose methods will be called at scene manager events (update, destroy, ...)
+    | void addLodListener(LodListener *)        add a listener whose methods will be called at LoD events             
+    | void addRenderObjectListener(l *)         add a listener whose methods will be called at object rendering events
+    | void clearScene()                         empties the entire scene
+    | Animation *createAnimation(string name,l) create animation object with given name and length (l) that can be used to animate nodes
+    | Camera *createCamera(string name)         create a new camera, it must be manually added to the scene with attachObject()
+    | Entity *createEntity(string name, Mesh *) create a new entity (instance of a mesh)
+    | ... createInstanceManager(...)            create InstanceManager object that can be used to manage instanced entities
+    | Light *createLight(string name)           create a new light node
+    | ParticleSystem *createParticleSystem(nam) create a new particle system with given name
+    | SceneNode* createSceneNode(string name)   create a new scene node
+    | void destroyAllAnimations()               destroys all animations created by this scene manager
+    | ColourValue getAmbientLight()             get the ambient light color in the scene
+    | Animation* getAnimation(string name)      get previously created animation by its name
+    | RenderSystem* getDestinationRenderSystem()  get the rendering system
+    | ColourValue getFogColour()                get the fog color
+    | double getFogDensity()                    get the fog density
+    | double getFogEnd()                        get the fog end distance
+    | FogMode getFogMode()                      get the fog mode (FOG_NONE, FOG_EXP, FOG_EXP2 or FOG_LINEAR)
+    | double getFogStart()                      get the start distance of the fog
+    | SceneNode *getRootSceneNode()             get the root scene node
+    | ColourValue getShadowColour()             get the color used to modulate areas that are in shadow
+    | SceneNode *getSkyBoxNode()                get the skybox node, if it is enabled
+    | SceneNode *getSkyPlaneNode()              get the skyplane node, if it is enabled 
+    | bool isSkyBoxEnabled()                    check if skybox is enabled
+    | void setAmbientLight(ColourValue)         set the ambient light color for the scene
+    | void setFog(mode,ColourValue,dens,st,en)  set the fog parameters (mode is FOG_NONE, FOG_EXP, FOG_EXP2 or FOG_LINEAR)
+    | void setShadowColour(ColourValue)         set the color used to modulate areas that are in shadow
+    | void setSkyBox(enabl,material_name,dist)  set skybox parameters  
+    | void setSkyDome(enabl,material_name)      set skydome parameters
+    | void setSkyPlane(enabl,material_name,sc)  set skyplane parameters
+    | void showBoundingBoxes(bool)              set whether bounding boxes should be shown
+    |
+    \_Ogre::DefaultSceneManager                   default scene manager
+    |
+    \_Ogre::BspSceneManager                       scene manager used for indoor scenes rendering with BSP trees
+    |
+    \_Ogre::OctreeSceneManager                    scene manager that divides the scene with an octree
+
+  Ogre::Renderable                            something that can be queued into rendering pipeline, renderables are grouped by material when rendered
+    LightList getLights()                     get a list of lights affecting the node, ordered by how close they are
+    Material *getMaterial()                   get the material
+    void getWorldTransforms(Matrix4 *m)       get the world transform matrix
+    void postRender(smgr *, renderSystem *)   called after the object has been rendered, can be reimplemented
+    bool preRender(smgr *, renderSystem *)    called before the object has been rendered, can be reimplemented
+    void setCustomParameter(i, Vector4 val)   set custom vector value that can be used as shader parameter etc.
+    
+    
