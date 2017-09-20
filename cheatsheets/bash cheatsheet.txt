@@ -510,6 +510,7 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
       -f fontfile         set font from figlet fontfile (.flf), to see font directory run with -I 2
       -c                  centered text
       -w N                set the output screen width
+      -S -k -o -W         set composition rules (nicely merge, separate characters, overlapping, full-width characters)
     fortune             print random fortune cookie text
       -l                  print long fortune
       -s                  print short fortune
@@ -549,6 +550,9 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
       -f fontfile         set font from given figlet/toilet font file (.flf/.tlf), to see font directory run with -I 2
       --gay               gay filter (characters are rainbow colored)
       --metal             metal filter (character are gray/blue)
+      -S -k -o -W         set composition rules (nicely merge, separate characters, overlapping, full-width characters)
+      --filter str        apply given filters, (separated by ":", e.g. "crop:gay"), filters are:
+                          crop, gay, metal, flip, flop, 180, left, right, border
     traceroute address  trace and print the route the packets take in network when sent to given address
       -w sec              set given numbers of seconds to wait fot the probe
       -I                  use ICMP ECHO for tracing
