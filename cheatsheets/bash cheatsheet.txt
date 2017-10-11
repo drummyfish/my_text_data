@@ -500,12 +500,15 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
       -vf                 video filter, complex graph filter can be constructed (separate filters with ",", filterchains with ";", labels [labelname],
                           e.g.: "split [main][tmp]; [tmp] boxblur=5:1, crop=W:H:X:Y [tmp2]; [main][tmp2] overlay=x=X:y=Y"), some filters are:
                             atadenoise, avgblur, blend, chromakey, codecview, colorkey, colorlevels, crop, deshake, drawgrid, drawtext, edgedetect,
-                            fade, hflip, negate, perspective, reverse, scale, showinfo, threshold, vflip 
+                            fade, hflip, negate, perspective, reverse, scale, showinfo, threshold, vflip, minterpoolate
       -af                 audio filter, complex graph filter can be constructed as with -vf, some audio filters are:
                             acrossfade, adelay, aecho, amix, atempo, chorus, equalizer, flanger, highpass, pan, treble, volume
       -shortest           the output will be as long as the shortest input
       -b:v n              set video bitrate (quality, bits/s), human readable format can be used, e.g. 64k = 64000 
       -b:a n              set audio bitrate (quality, bits/s), human readable format can be used, e.g. 64k = 64000
+      
+                          examples:
+                          slow motion       ffmpeg -i input.mp4 -vf "minterpolate=60, setpts=4*PTS" output.mp4
     figlet              display the input text as a cool ASCII art big text
       -f fontfile         set font from figlet fontfile (.flf), to see font directory run with -I 2
       -c                  centered text
