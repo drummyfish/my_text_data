@@ -51,7 +51,8 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
     diff file1 file2    compare and show difference of two files
       -b                  treat whitespaces at the end of the line as a single newline
       -C n                show n lines of context in the output
-      f                   alternative output format
+      -u                  unified format (+ and - symbols)
+      -f                  alternative output format
     dirname file        print dirctory part of given path
     dot file            execute script in current environment (. can also be used), returns the value returned by last command in script
     du f1 f2 ...        print file size, by default lists all files in all subdirectories
