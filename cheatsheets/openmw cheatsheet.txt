@@ -44,7 +44,7 @@ CONSOLE
   coe x y                          teleport (center on exterior) to given cell coordinates
                                      x    cell x (-27 to 22)
                                      y    cell y (-15 to 27)
-  changeweather region type        change weather in given region (takes some time to rake effect, try rest for 1H)
+  changeweather region type        change weather in given region (takes some time to take effect, try rest for 1H)
                                    regions: http://en.uesp.net/wiki/Morrowind:Regions
                                    region:                            type:
                                      "Bitter Coast Region" (southwest)  0 (clear)
