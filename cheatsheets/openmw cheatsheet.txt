@@ -61,6 +61,7 @@ CONSOLE
   sethealth 0                      kill target (select with mouse when console is open)
   setwaterlevel x                  set water level to x (only for interior cells)
   set gamehour to x                set time of day to given hour
+  showscenegraph                   export scene graph into file
   togglewireframe                  wireframe rendering
   player->additem gold_100 1000    add 1000 gold (money)
   player->setspeed x               set player's speed to x (200 - normal, 1000 - super fast)
