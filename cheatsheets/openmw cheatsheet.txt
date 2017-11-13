@@ -1,0 +1,78 @@
+REFERNCE
+  https://openmw.github.io          Doxygen documentation
+  http://bugs.openmw.org            bug tracker
+
+PATHS
+  ~/.config/openmw                  config and logs
+  ~/.local/share/openmw/saves       save games
+  ~/.local/share/openmw             screenshots
+  ~/.local/share/openmw/data        data and mods
+
+CLI PARAMETERS
+  --help                            help
+  --skip-menu                       skip the startup menu, good for quick startup when debugging
+  --no-grab                         don't grab mouse cursor (good for debugging with GDB)
+  --load-savegame filepath          load game from given file
+  --activate-dist=value             override the distance the player can activate objects at
+
+WINE
+  setxkbmap -layout us     <- run in terminal before running Morrowinf to make console work
+  setxkbmap -layout cz     <- set the keyboard layout back
+
+INGAME
+  F3 (press multiple times)         profiler
+  F4                                resource info
+
+CONSOLE
+  complete list: http://en.uesp.net/wiki/Tes3Mod:Categorical_Function_List
+
+  aitravel x y z                   make NPC go (move) to given position
+  additem id count                 add item
+  coc cellname                     teleport (center on cell)
+                                   cellname:
+                                     "ald-ruhn"
+                                     "balmora"
+                                     "molag mar"
+                                     "vivec"
+                                     "seyda neen"
+                                     "Vivec, Telvanni Underworks"     (interior water)
+                                     "Nimawia Grotto"                 (interior water)
+                                     "Karthgad"                       (SHOTN mod - Skyrim)
+                                     "Mournhold, Great Bazaar"
+                                     "Fort Frostmoth"                 (Solstheim)
+                                     "Bamz-Amschend, Hearthfire Hall" (under Mournhold)
+  coe x y                          teleport (center on exterior) to given cell coordinates
+                                     x    cell x (-27 to 22);
+                                     y    cell y (-15 to 27)
+  changeweather region type        change weather in given region (takes some time to rake effect, try rest for 1H)
+                                   regions: http://en.uesp.net/wiki/Morrowind:Regions
+                                   region:                            type:
+                                     "Bitter Coast Region" (southwest)  0 (clear)
+                                     "Red Mountain Region" (middle)     1 (cloudy)
+                                     "Ascadian Isles Region" (south)    2 (foggy)
+                                     "Ashlands Region" (around middle)  3 (overcast)
+                                     "Azura's Coast Region" (east)      4 (rain)
+                                     "Grazelands Region" (northeast)    5 (thunder)
+                                     "Molag Amur Region" (sotheast)     6 (ash)
+                                     "Sheogorad Region" (north)         7 (blight)
+                                     "West Gash" (northwest)            8 (snow)
+                                                                        9 (blizzard)
+  getpos C                         get position (C is coordinate, i.e. X, Y or Z)
+  sethealth 0                      kill target (select with mouse when console is open)
+  setwaterlevel x                  set water level to x (only for interior cells)
+  set gamehour to x                set time of day to given hour
+  togglewireframe                  wireframe rendering
+  player->additem gold_100 1000    add 1000 gold (money)
+  player->setspeed x               set player's speed to x (200 - normal, 1000 - super fast)
+  player->setflying bool           make player fly (bool = 1 yes, 2 no)
+  tcb                              toggle collision boxes (display collisions)
+  tcl                              toggle collisions
+  tfow                             reveal whole map (toggle fog of war)
+  tgm                              toggle god mode (invulnerability)
+  tpg                              toggle path grid (display NPC paths)
+  unlock                           unlock target (select with mouse when console is open)
+
+  OFTEN USED:
+  changeweather "Bitter Coast Region" 4
+  aitravel player->getpos x, player->getpos y, player->getpos z
+
