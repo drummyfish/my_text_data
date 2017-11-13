@@ -42,7 +42,7 @@ CONSOLE
                                      "Fort Frostmoth"                 (Solstheim)
                                      "Bamz-Amschend, Hearthfire Hall" (under Mournhold)
   coe x y                          teleport (center on exterior) to given cell coordinates
-                                     x    cell x (-27 to 22);
+                                     x    cell x (-27 to 22)
                                      y    cell y (-15 to 27)
   changeweather region type        change weather in given region (takes some time to rake effect, try rest for 1H)
                                    regions: http://en.uesp.net/wiki/Morrowind:Regions
