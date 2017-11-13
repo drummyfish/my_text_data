@@ -1,4 +1,4 @@
-REFERNCE
+REFERENCE
   https://openmw.github.io          Doxygen documentation
   http://bugs.openmw.org            bug tracker
 
@@ -16,7 +16,7 @@ CLI PARAMETERS
   --activate-dist=value             override the distance the player can activate objects at
 
 WINE
-  setxkbmap -layout us     <- run in terminal before running Morrowinf to make console work
+  setxkbmap -layout us     <- run in terminal before running Morrowind to make console work
   setxkbmap -layout cz     <- set the keyboard layout back
 
 INGAME
