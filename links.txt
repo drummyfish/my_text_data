@@ -8,6 +8,7 @@ free/libre stuff:
   - http://osgameclones.com/                                    Open Source Game Clones
   - https://www.wikidata.org/wiki/Wikidata:Main_Page            Wikidata, huge network of free data
   - https://github.com/trending                                 GitHub - trending repositories
+  - https://gitlab.com/explore/projects/trending                GitLab - trending repositories
   - https://bitbucket.org/repo/all                              Bitbucket - search repositories
   - http://freegamer.blogspot.hr/                               Freegamer, a blog about libre games
   - https://opengameart.org/                                    Open Game Art, free game resources
