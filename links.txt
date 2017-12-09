@@ -32,6 +32,7 @@ computer graphics:
   - https://www.reddit.com/r/Simulated/                         reddit/r/Simulated, great videos of computer simulations
   - https://www.youtube.com/user/CGMeetUp                       CGMeetup, awesome breakdowns of VFX in movies, ads etc.
   - https://www.turbosquid.com/                                 paid 3D models, good for quality inspiration
+  - https://www.shadertoy.com                                   powerful shader toy and a repo of unbelieveable creations
 
 fun/interesting:
   - https://esolangs.org/wiki/Hello_world_program_in_esoteric_languages    Esolang Wiki, funny and original programming languages
