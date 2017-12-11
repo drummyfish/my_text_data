@@ -38,7 +38,7 @@ IN VIM:
   search/replace:
     /what                search for what (case sensitive)
     /\cwhat              case insensitive search 
-     %:s/x/y/g           replace all "x"s with "y"s
+    :%s/x/y/g           replace all "x"s with "y"s
     *                    find word under the cursor
     :noh                 unmark found results
     n                    jump to next found result
