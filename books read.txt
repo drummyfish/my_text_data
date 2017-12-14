@@ -35,3 +35,4 @@ These are the books I've read from start to finish.
 - Linus Torvalds & David Diamond - Just for Fun
 - Sam Williams & Richard Stallman - Free as in Freedom 2.0: Richard Stallman's Crusade for Free Software
 - Barbara Demick - Nothing to Envy
+- Glyn Moody - Rebel Code
