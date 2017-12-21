@@ -75,6 +75,7 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
       -name str           specifies the pattern to search for (e.g. *.txt)
       -type               search only for specified file types (d - directory, f - regular file, l - symbolic link)
       -maxdepth n         maximum depth of search
+      -iregex r           use regex to search for files (e.g. '.*/\(components\|apps\)/.*\.\(cpp\|hpp\)$')
       -L                  follow symbolic links
     fc                  command history list (by default opens with editor)
       -l                  list the commands (do not open with editor)
