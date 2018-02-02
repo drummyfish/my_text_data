@@ -53,6 +53,7 @@ IN VIM:
     resize +n            resize window height by n lones (- can also be used)
     :save file           saves as file
     :tabedit file        opens a file in tab
+    :tabmove n           move tab to position n
     :vertical resize +n  resize window width by n columns (- can also be used)
     :vsplit              vertically split window (close with :q)
     :wa                  save all open files
