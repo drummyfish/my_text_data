@@ -6,6 +6,7 @@ free/libre stuff:
   - https://en.wikisource.org/wiki/Category:Works               Wikisource, books and texts under free licenses
   - https://www.blendswap.com/                                  Blender models/files under CC
   - http://osgameclones.com/                                    Open Source Game Clones
+  - https://libregamewiki.org                                   Libre game Wiki, FLOSS game database
   - https://www.wikidata.org/wiki/Wikidata:Main_Page            Wikidata, huge network of free data
   - https://github.com/trending                                 GitHub - trending repositories
   - https://gitlab.com/explore/projects/trending                GitLab - trending repositories
