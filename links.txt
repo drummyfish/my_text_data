@@ -52,7 +52,8 @@ mainstream:
   - https://www.wikipedia.org/                                  Wikipedia, the free encyclopedia
   - https://www.youtube.com/                                    YouTube, videos
   - https://www.reddit.com/                                     reddit, the front page of the internet
-  - https://github.com/                                         GitHub, the place of free software 
+  - https://voat.co                                             reddit but uncensored
+  - https://github.com/                                         GitHub, the place of free software 
   - https://sourceforge.net/                                    SourceForge, before GitHub took over
   - http://www.4chan.org/                                       4chan, where all the quality memes are born
   - http://www.deviantart.com/                                  Deviant Art, sharing great art of all kind
