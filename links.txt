@@ -7,7 +7,8 @@ free/libre stuff:
   - https://www.blendswap.com/                                  Blender models/files under CC
   - http://osgameclones.com/                                    Open Source Game Clones
   - https://libregamewiki.org                                   Libre game Wiki, FLOSS game database
-  - https://www.wikidata.org/wiki/Wikidata:Main_Page            Wikidata, huge network of free data
+  - https://github.com/Translator5/games                        list of games on GitHub
+  - https://www.wikidata.org/wiki/Wikidata:Main_Page            Wikidata, huge network of free data
   - https://github.com/trending                                 GitHub - trending repositories
   - https://gitlab.com/explore/projects/trending                GitLab - trending repositories
   - https://bitbucket.org/repo/all                              Bitbucket - search repositories
