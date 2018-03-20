@@ -17,13 +17,12 @@ ORIGINAL, HIGHLY VALUED
   - Tupper's formula (Tupperův vzorec): https://en.wikipedia.org/wiki/Tupper%27s_self-referential_formula
   - Euler's identity formula (vzorec Eulerovy identity): https://en.wikipedia.org/wiki/Euler%27s_identity
   - free software, open-source (svobodný software, open-source)
-  - this software logos (loga tohoto softwaru): Linux, Blender, GIMP, Inkscape
+  - these software logos (loga tohoto softwaru): Linux, Blender, GIMP, Inkscape, Neverball
   - hacker glider logo (hackerské logo glider): http://www.unixstickers.com/image/cache/data/stickers/hackerEmblem/Hacker-logo.sh-340x340.png
   - Richard Stallman
-- very small one/two-person boat (velmi malá bakelitová loď pro jednoho nebo dva lidi)
-- steering wheel/joystick PC controller (volant/joystick ovladač k PC)
-- quality recording microphone (kvalitní mikrofon pro nahrávání)
-- sound recorder with microphone (zvukový rekordér s mikrofonem): https://www.canford.co.uk/Images/ItemImages/large/93-4294_01.jpg
+- very small one/two-person boat (velmi malá bakelitová loďka pro jednoho nebo dva lidi)
+- steering wheel/joystick/other PC controller (volant/joystick/jiný ovladač k PC)
+- sound recorder with microphone (zvukový rekordér s mikrofonem), e.g.: https://www.canford.co.uk/Images/ItemImages/large/93-4294_01.jpg
 - HTC Vive/Oculus Rift
 - small camera or video recorder (malý foťák či kamera)
 - stethoscope (stetoskop)
