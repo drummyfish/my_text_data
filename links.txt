@@ -79,7 +79,8 @@ other:
 
 Czech:
   - http://www.rouming.cz/                                      great, ancient meme page
-  - https://ulozto.cz/                                          the go to file sharing page with movies, games etc.
+  - http://www.lamer.cz                                         old page with funny quotations from internet discussions
+  - https://ulozto.cz/                                          the go to file sharing page with movies, games etc.
   - https://www.youtube.com/watch?v=cJBX16QL61U&list=PLACA0FEDF46E81048   Game Page, the best TV show on video games ever
   - https://www.zive.cz/archivcasopisu/mobility.asp             Mobility archive, an old cell phone magazine
   - https://www.spoluzaci.cz/                                   an old social net, easy to break into, nice for stalking
