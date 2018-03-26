@@ -73,6 +73,7 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
     file                determines and writes the file type (also takes a look at the content, e.g.: HTML UTF-8 file with long lines)
     find path           recursively search for files
       -name str           specifies the pattern to search for (e.g. *.txt)
+      ! -name             exclude specific name, e.g.: find . -name "*.cpp" ! -name "not_this.cpp"
       -type               search only for specified file types (d - directory, f - regular file, l - symbolic link)
       -maxdepth n         maximum depth of search
       -iregex r           use regex to search for files (e.g. '.*/\(components\|apps\)/.*\.\(cpp\|hpp\)$')
