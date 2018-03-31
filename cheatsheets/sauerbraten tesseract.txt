@@ -1,0 +1,49 @@
+GENERAL:
+  speak                             t
+  enter/leave edit mode             e
+  rotate view around selection      j + mouse move
+  execute command window            F6 (write commands withou '/')
+  undo                              u
+  edit reference (tesseract)        F10
+  recompute lightmaps               k
+
+VOXEL EDITING:
+  select voxels                     left mouse (can drag)
+  extend (move) voxel selection     right mouse (drag to move)
+  increase/decrease selection size  g + mouse wheel
+  select voxel corners              middle mouse (can drag)
+  extrude                           mouse wheel
+  extrude corner                    aim at corner, then q + mouse wheel
+  copy voxels                       select voxels, then c
+  paste voxels                      v
+  move selected voxels              shift + mouse move
+  rotate selected voxels in plane   aim at appropriate side, then r + mouse wheel
+
+TEXTURES:
+  texture selection menu            F2
+  quick change texture              select voxels, then y + mouse wheel
+  texture offset X                  select voxels, then o + mouse wheel
+  texture offset Y                  select voxels, then p + mouse wheel
+  scale texture                     select voxels, then . + mouse wheel
+  rotate texture                    select voxels, then , + mouse wheel
+
+OBJECTS:
+  object selection menu (sauer)     F4
+  object selection menu (tess)      F3
+  move object in plane              aim at appropriate object BB wall and drag
+  quick object change               aim at object + mouse wheel
+  delete object                     aim at object + delete
+  rotate object                     r + mouse wheel
+
+MATERIAL:
+  material volume selection menu    F4
+
+ENTITIES:
+  entity selection menu             F1
+
+OTHER:
+  material selection menu           F3
+
+COMMANDS:
+  save map (to packages/base/)      /savemap mapname
+  load map                          /map mapname
