@@ -17,6 +17,7 @@ FLOSS stands for **Free/Libre Open-Source Software**. The names are somewhat con
   - Instead going for **copyleft**, which basically means providing your information to everyone for free and requiring anyone who uses it to make new information to do the same with it. E.g. I draw a picture, upload it to the Internet and allow anyone to modify it on the condition that if they do, they also have to allow other to modify the new image.
   - **Getting rid of some kinds of patents**, particularly software patents, because they cause many, many legal problems.
   - **Protecting privacy** - In order to protect the private data of people, we have to make the systems that work with it transparent in the sence we have to know exactly what they do and how they work.
+  - Supporting and encouraging openness in general, such as creating **public domain** works.
 
 ## Why support Free/Libre Open-Source Software (FLOSS) (and culture in general)?
 
@@ -43,9 +44,19 @@ Many people have many reasons with different priorities of why you should suppor
 
 You totally can, the point is: make money by getting paid for your work, not by selling the right to what you create. Some ways include:
 
+- **Sell services**: Make FLOSS, give it away, let people use it, then sell services, such as **support**, **training**, **certification**, **cutom patches**, **installation in their company**, **packaging** etc. (see [Red Hat](https://www.redhat.com/en)).
+- **Crowdfunding**: Get money to fund the development costs, then release it as FLOSS. Give people who helped fund the project special attention, e.g. let them set the direction, vote on the name, the license, make some special content for them, put them into credits, let them chat with you etc.
+- **Ask for donations**: Giving away your work for free is rightfully seen as an extremely generous thing, people will support you with donations.
+- **Sell brand product**: People are proud to use FLOSS and will pay for t-shirts, mugs, plush mascots, CDs etc.
+- **Sell hardware**: People will buy HW that has free SW for it. Example: make a game console, create FLOSS games for it, let people buy the console, play the games and **improve and fix them and make new ones for free**.
+- **Get poaid by the governemnt**: Government is paid by all people and should deliver to all people. Therefore if government pays you to write software, you should release it as FLOSS. Also applies to other areas, for example NASA releases their photos into public domain.
+- **Dual-licensing**: Some software give you the choice to choose the license, usually a copyleft one (meaning you can do whatever you want except for close-sourcing it) and non-copyleft one (meaning you can close-source it), which you have to pay for. This may sometimes be seen as not 100 % correct by some purists. I see it as a possible lesser evil way in the times of transition to fully free culture.
+- If you can't go full FLOSS right now, you may at least choose the lesser evil and start preparing for the transition with some **partial solutions**, such as opening only certain parts of your software (e.g. game engine while keeping the game data proprietary).
+
 ## Other questions
 
 Isn't this utopia?
+Totally not. It's been working for many years now, there are many companies making huge money on FLOSS, authors writing copyleft licensed books etc.
 
 Isn't this communism?
 
