@@ -6,7 +6,7 @@ Hello, my friend, you probably had a conversation with me and was redirected her
 
 ## What is FLOSS and free culture?
 
-FLOSS stands for **Free/Libre Open-Source Software**. The names are somewhat confusing and weird because different people have different views and want to call it differently, and sometimes by all names at once. But basically, it's all about:
+FLOSS stands for **Free/Libre and Open-Source Software**. The names are somewhat confusing and weird because different people have different views and want to call it differently, and sometimes by all names at once. But basically, it's all about:
 
 - **Free** (as in **freedom**) and **open** software, which:
   - Allows **anyone** to **use** it, **study** it, **modify** it and **improve** it.
