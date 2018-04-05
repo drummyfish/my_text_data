@@ -19,7 +19,7 @@ FLOSS stands for **Free/Libre Open-Source Software**. The names are somewhat con
   - **Protecting privacy** - In order to protect the private data of people, we have to make the systems that work with it transparent in the sence we have to know exactly what they do and how they work.
   - Supporting and encouraging openness in general, such as creating **public domain** works.
 
-## Why support Free/Libre Open-Source Software (FLOSS) (and culture in general)?
+## Why support FLOSS?
 
 Many people have many reasons with different priorities of why you should support FLOSS. I personally think it's because of:
 
@@ -60,6 +60,9 @@ You totally can, the point is: make money by getting paid for your work, not by 
 
 - Isn't this communism?
   - Totally not. Communism is about trying to equally redistribute wealth which means taking away from succesful people. FLOSS isn't taking anything from anyone (except from the current arbitrary and forced restrictions) because as mentioned above, when you give information away, you still get to keep it. If communism means anything, it's censorship and effort to restrict and control people, which is exactly what closed and proprietary software does.
+
+- I'm not a programmer, should I even care?
+  - Totally, free culture is a culture for all people, goes beyond programming and needs all people in order to function best. If you support FLOSS, you not only get the direct benefits (freedom, zero cost, security, ...), but you're helping a bigger cause - you're encouraging progress, education, security, privacy protection, and figting against the evil - censorship, monopoly, meaningless jobs, abuse of personal data and so on.
 
 - I'm hooked, where can I get more info and what should I do next?
   - Start using FLOSS instead of proprietary software (install [GNU/Linux](https://en.wikipedia.org/wiki/Linux) operating system), take a look at FLOSS projects, spread the word, talk to people, join the communities, donate, contribute. Some of the projects include: [Wikipedia](https://www.wikipedia.org/), [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page), [Project Gutenberg](http://www.gutenberg.org/), [GNU](https://www.gnu.org/gnu/gnu.en.html), [FSF](https://www.fsf.org/), [OpenStreetMap](https://www.openstreetmap.org), [osgameclones](https://osgameclones.com/), [Libre Game Wiki](https://libregamewiki.org/Main_Page), [OpenHub](https://www.openhub.net/), [GitHub](https://github.com/), [OpenGameArt](https://opengameart.org/). Read books (for free: [Free as in Freedom](http://www.gutenberg.org/ebooks/5768), [Free Culture](http://www.free-culture.cc/freecontent/) , ...).
