@@ -55,9 +55,11 @@ You totally can, the point is: make money by getting paid for your work, not by 
 
 ## Other questions
 
-Isn't this utopia?
-Totally not. It's been working for many years now, there are many companies making huge money on FLOSS, authors writing copyleft licensed books etc.
+- Isn't this utopia?
+  - Totally not. It's been working for many years now, there are many companies making huge money on FLOSS, authors writing copyleft licensed books etc.
 
-Isn't this communism?
+- Isn't this communism?
+  - Totally not. Communism is about trying to equally redistribute wealth which means taking away from succesful people. FLOSS isn't taking anything from anyone (except from the current arbitrary and forced restrictions) because as mentioned above, when you give information away, you still get to keep it. If communism means anything, it's censorship and effort to restrict and control people, which is exactly what closed and proprietary software does.
 
-I'm hooked, where can I get more info and what should I do next?
+- I'm hooked, where can I get more info and what should I do next?
+  - Start using FLOSS instead of proprietary software (install [GNU/Linux](https://en.wikipedia.org/wiki/Linux) operating system), take a look at FLOSS projects, spread the word, talk to people, join the communities, donate, contribute. Some of the projects include: [Wikipedia](https://www.wikipedia.org/), [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page), [Project Gutenberg](http://www.gutenberg.org/), [GNU](https://www.gnu.org/gnu/gnu.en.html), [FSF](https://www.fsf.org/), [OpenStreetMap](https://www.openstreetmap.org), [osgameclones](https://osgameclones.com/), [Libre Game Wiki](https://libregamewiki.org/Main_Page), [OpenHub](https://www.openhub.net/), [GitHub](https://github.com/), [OpenGameArt](https://opengameart.org/). Read books (for free: [Free as in Freedom](http://www.gutenberg.org/ebooks/5768), [Free Culture](http://www.free-culture.cc/freecontent/) , ...).
