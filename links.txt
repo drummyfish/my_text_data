@@ -21,6 +21,7 @@ free/libre stuff:
 non-free/libre resources:
   - http://web.archive.org/                                     browse the archived Internet throughout the ages
   - https://archive.li                                          another Internet archive
+  - https://www.archiveteam.org/index.php?title=Deathwatch      Internet archiving wiki, lot of oldschool websites
   - https://www.vg-resource.com/                                ripped game resources (models, sprites, sounds, ...)
   - https://www.imperial-library.info/                          TES game books
   - https://thepiratebay.org/                                   The Pirate Bay, information wants to be free
