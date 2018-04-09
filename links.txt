@@ -65,6 +65,11 @@ mainstream:
   - http://www.deviantart.com/                                  Deviant Art, sharing great art of all kind
   - http://www.facebook.com                                     Facebook, for stalking people
 
+personal websites:
+  - https://onpon4.github.io/                                   onpon4, libre game dev
+  - http://krzysztofjankowski.com/                              w84death, libre game dev
+  - http://www.tastyfish.cz/                                    tastyfish, libre game dev, me
+
 tools:
   - http://www.regexr.com/                                      regexr, great regexp online tool
   - https://repl.it/                                            repl.it, online interpreters for many programming langs
