@@ -52,6 +52,7 @@ fun/interesting:
   - http://www.survivorlibrary.com/                             everything you need to survive, everything is public domain
   - https://xkcd.com/                                           xkcd, webcomic about math/programming
   - http://www.wtfpl.net/                                       WTFPL, the ultimately free license
+  - http://motherfuckingwebsite.com/                            what most web pages should look like
 
 mainstream:
   - https://www.google.com/                                     Google, search
