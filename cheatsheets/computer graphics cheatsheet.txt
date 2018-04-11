@@ -1,0 +1,93 @@
+WORK IN PROGRESS
+
+This is not a complete cheatsheet of CG, just things I personally want to have a cheatsheet of.
+
+- radiometry
+  - Measurement of electromegnetic radiation including light.
+  - measured quantities:
+    - basic quantities:
+      - radiant energy (Q,[J])
+      - radiant flux/power (P,[W = J/s])
+      - radiant flux density ([W/m^2]): for directional lights
+        - irradiance: flux flowing INTO a surface
+        - radiosity/exitance: flux flowing OUT of the surface
+      - radiant intensity (I,[W/sr]): for point light sources
+      - radiance (L,[W/(sr * m^2)]: Illumination in a single ray of light on a surface area, this is the quantity
+                                    measured when evaluating the rendering equation - IMPORTANT. (The reason for
+                                    sr in the unit: iny physics we can't get a value in a single point, we have
+                                    to integrate over the solid angle)
+    - spectral quantities: The same, but additionally parametrized by the wavelength.
+  - functions:
+    - BRDF (bidirectional reflectance distribution function)
+      - most often used
+      - input: incoming direction, outgoing direction (both with respect to the surface normal)
+      - output: ratio of outcoming radiance to incoming radiance
+    - BTDF (bidirectional transmittance distribution function)
+      - same as BRDF, but the outgoing direction in on the other side of the surface, i.e. says
+        how the incoming light gets into the surface instead of how it's reflected.
+    - BSDF (bidirectional scattering distribution function)
+      - BRDF + BTDF, i.e. for incoming light direction and outgoing light direction (which can be
+        above or below the surface) returns the ration of the incoming to outcoming radiance.
+    - SVBRDF (spatially varying bidirectional reflectance distribution function)
+      - Like BRDF but also takes an extra parameter: the position on the surface, i.e. models
+        surfaces whose BRDF differs across the surface.
+    - BSSRDF (bidirectional surface scattering reflectance distribution function)
+      - Takes into account also subsurface scattering etc., defines the relationship between any
+        incoming and outcoming light ray (which may also be at a DIFFERENT POINT of the surface).
+    - BTF (bidirectional texture function)
+      - For a given texture coordinate, viewing and illumination angle tells the outcoming light.
+- photometry
+  - Same as radiometry, but with respect to human eye, i.e. everything is multiplies by a photometric curve.
+
+- screen-space effects
+  - ambient occlusion
+    - SSAO (screen space ambient occlusion)
+      - simple, sometimes inaccurate
+      - For each pixel samples a normal-oriented hemisphere for occlusions and decides how much occlusion appears.
+    - SSDO (screen space directional occlusion)
+      - generalization of SSAO
+      - Takes into account directions and so allows for "colored" occlusion shadow in scenes with multiple lights.
+        Also computes one bounce of indirect ilumination and so approximates global ilumination.
+
+    - HBAO (horizon based ambient occlusion)
+      - 
+    - HBAO+
+    - GTSO
+    - HemiAO
+    - GTAO (ground truth ambient occlison)
+      - most accurate
+
+- PBR (physically based rendering)
+  - A set of ideas and philosophies, using physics for close-to-reality rendering.
+  - core ideas
+    - using "measured" textures of physical surface properties
+      - albedo map: What wavelengths are absorbed by the surface, defines its color. In
+                    non-PBR diffuse texture was used instead. The difference is: albedo
+                    has no ligting (AO, shadows, ...) in it!
+      - one of the following
+        - metallness "workflow"
+          - two maps:
+            - metallness map: How metal (more reflective, little diffuse, ...) or insulant (uncolored specular
+                              reflection, ...) the material is.
+            - roughness map: How rough the surface is due to microsurfaces. The inverse is glossiness map.
+          - more "PBR"
+          - more difficult to mess up the material, but also more difficult to create unrealistic materials
+          - uses less memory (doesn't specify the color of specular reflections)
+          - can have artifacts
+        - specular "workflow": less "PBR", easier to mess up the material
+          - specularity map: Explicit color (and intensity) of the specular reflections (black = no specular
+                             reflections).
+          - glossiness map: How glossy the surface is (inverse is the roughness map).
+      - normal/bump maps as usual
+    - energy conservation: When increasing reflectivity of material, the specular reflections get smaller
+                           and brighter, but other areas (diffuse reflections) get accordingly darker
+                           (e.g. if a cloth gets wet, it look darker).
+    - Fresnel: Surfaces reflect more light when viewed at grazing angles (Fresnel's law says that more
+               light is reflected when hitting the surface at low angle). E.g. a rendered ball will be
+               brighter at edges. 
+
+- pixel art upscaling methods
+  - general upscaling methods (nearest-neighbour, bilinear, bicubic, vector tracing, ...)
+  - specialized methods: because pixel art offers some presumptions (small palleter, small-scale features, common patterns etc.)
+    - EPX: oldest, simple (4 neighbour pixels, 5 conditions), OK for fonts
+    - 
