@@ -19,6 +19,7 @@ VOXEL EDITING:
   move selected voxels              shift + mouse move
   rotate selected voxels in plane   aim at appropriate side, then r + mouse wheel
   "terrain" edit                    select voxels, then aim, press h and scroll mouse
+  smoothen terrain                  h (in terrain mode)
 
 TEXTURES:
   texture selection menu            F2
