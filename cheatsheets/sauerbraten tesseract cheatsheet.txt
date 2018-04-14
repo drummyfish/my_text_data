@@ -33,7 +33,7 @@ TEXTURES:
 
   BLENDING:
     1. select texture from menu (for upper layer)
-    2. use command "/texlayer N" (for bottom layer, N = texture number)
+    2. use command "/vlayer N" (for bottom layer, N = texture number, can be get with "/echo (getseltex)")
     3. with y + mouse wheel set these layers to given voxels
     4. with numpad select the blend paint mode (mouse wheel changes brush)
     5. paint
