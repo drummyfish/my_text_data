@@ -51,3 +51,4 @@ OTHER:
 COMMANDS:
   save map (to packages/base/)      /savemap mapname
   load map                          /map mapname
+  toggle materials (water etc.)     /showmat [0|1]
