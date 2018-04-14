@@ -38,7 +38,7 @@ TEXTURES:
     4. with numpad select the blend paint mode (mouse wheel changes brush)
     5. paint
 
-OBJECTS (so called entities):
+OBJECTS (so called mapmodels):
   object selection menu (sauer)     F4
   object selection menu (tess)      F3
   move object in plane              aim at appropriate object BB wall and drag
@@ -61,7 +61,7 @@ ENTITIES:
 OTHER:
   material selection menu           F3
 
-COMMANDS (write in chat):
+COMMANDS (write in chat):           (reference at http://sauerbraten.org/docs/editref.html)
   save map (to packages/base/)      /savemap mapname
   load map                          /map mapname
   toggle materials (water etc.)     /showmat [0|1]
