@@ -6,6 +6,8 @@ GENERAL:
   undo                              u
   edit reference (tesseract)        F10
   recompute lightmaps               k
+  start singleplayer (sauer)        run command "map" in console
+  increase map size                 menu -> editing -> map -> increase mapsize
 
 VOXEL EDITING:
   select voxels                     left mouse (can drag)
