@@ -38,13 +38,19 @@ TEXTURES:
     4. with numpad select the blend paint mode (mouse wheel changes brush)
     5. paint
 
-OBJECTS:
+OBJECTS (so called entities):
   object selection menu (sauer)     F4
   object selection menu (tess)      F3
   move object in plane              aim at appropriate object BB wall and drag
   quick object change               aim at object + mouse wheel
   delete object                     aim at object + delete
   rotate object                     r + mouse wheel
+  
+  COPY OBJECT:
+    1. select object
+    2. type "/editcopy"
+    3. unselect object
+    4. type "/editpaste"
 
 MATERIAL:
   material volume selection menu    F4
