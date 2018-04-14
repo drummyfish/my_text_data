@@ -44,7 +44,8 @@ OBJECTS (so called mapmodels):
   move object in plane              aim at appropriate object BB wall and drag
   quick object change               aim at object + mouse wheel
   delete object                     aim at object + delete
-  rotate object                     r + mouse wheel
+  rotate object                     select object, then F3 and change "direction" (sauer)
+                                    r + mouse wheel (tess)
   
   COPY OBJECT:
     1. select object
