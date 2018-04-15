@@ -66,3 +66,4 @@ COMMANDS (write in chat):           (reference at http://sauerbraten.org/docs/ed
   save map (to packages/base/)      /savemap mapname
   load map                          /map mapname
   toggle materials (water etc.)     /showmat [0|1]
+  calculate light maps              /calclight [-1|0|1]
