@@ -417,12 +417,18 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
       --export "person"     export public key of given person (usually combine with --armor and redirect to file)
       --export-secret-keys  same as --export but for secret keys
       --armor               ASCII armor, use when sending as ASCII
+      --clearsign           sign the message (creates a new copy of the input message and appends the signature)
+      --verify              verify the signature
+      -u "name"             specify protected key used to sign the message
       --encrypt             encrypt
-      --recipient "email"   specify the recipient, used with --encrypt
       --decrypt             decrypt
+      --recipient "email"   specify the recipient, used with --encrypt
       --output filename     output to file
       --no-tty              don't print to terminal
-      example: echo "message" | gpg --armor --encrypt --recipient name@server.com > message.gpg
+      examples: encrypt: echo "message" | gpg --armor --encrypt --recipient name@server.com > message.gpg
+                decrypt: gpg --output message.txt --no-tty message.gpg
+                sign:    gpg --output signed.txt --clearsign out.txt
+                verify:  gpg --verify signed.txt
     history               show command history
     tar action f1 f2 ...  tape archiver, .tar archive (so called tarball) manager, action can be:
                           -x                extract files from archive specified with -f
