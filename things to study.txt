@@ -3,22 +3,26 @@ Things I want to study more.
 - cryptocurrencies
 - electronics
 - Emacs
+- Esperanto
+- FreeCAD
 - functional programming
 - fuzzy logic
-- General Relativity
+- general relativity
+- GNU Octave
 - Gödel's incompleteness theorems (formal)
 - Japanese
 - lambda calculus
 - Lisp
 - logical programming
+- Lojban
 - node.js
 - quantum computing
-- quaternion details
+- quaternions
 - sigma calculus (OOP, "sigma kalkuk")
 - Spanish
+- spherical harmonics
 - Tor
 - Vulkan
-- Esperango
 - neural networks
 - RSA
 - Rust
