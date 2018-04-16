@@ -39,6 +39,7 @@ computer graphics:
   - https://www.reddit.com/r/Simulated/                         reddit/r/Simulated, great videos of computer simulations
   - https://www.youtube.com/user/CGMeetUp                       CGMeetup, awesome breakdowns of VFX in movies, ads etc.
   - https://www.turbosquid.com/                                 paid 3D models, good for quality inspiration
+  - https://sketchfab.com/                                      great 3D models viewable online, some are under free licenses
   - https://www.shadertoy.com                                   powerful shader toy and a repo of unbelieveable creations
 
 fun/interesting:
