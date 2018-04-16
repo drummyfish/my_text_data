@@ -408,7 +408,21 @@ This file is a BASH cheat sheet suited to me specifically, i.e. it contains stuf
       -Idir                 also search given directory for include files
       -lLib                 link library named libLib.a, usable multiple times
       -D symbol=x -u symbol consider symbol defined to x/undefined
-    gdb                   gnu CLI debugger
+    gdb                   GNU CLI debugger
+    gpg                   GNU Privacy Guard, encryption/decryption and key management tool (OpenPGP standard)
+      --gen-key             generate public/private key pair, sometimes needs rng-tools installed to generate enough entropy
+      --list-keys           list managed public keys
+      --list-secret-keys    list managed secret keys
+      --import filename     import given key that's in a file (as PGP block), either public (*.pub) or private (*.priv)
+      --export "person"     export public key of given person (usually combine with --armor and redirect to file)
+      --export-secret-keys  same as --export but for secret keys
+      --armor               ASCII armor, use when sending as ASCII
+      --encrypt             encrypt
+      --recipient "email"   specify the recipient, used with --encrypt
+      --decrypt             decrypt
+      --output filename     output to file
+      --no-tty              don't print to terminal
+      example: echo "message" | gpg --armor --encrypt --recipient name@server.com > message.gpg
     history               show command history
     tar action f1 f2 ...  tape archiver, .tar archive (so called tarball) manager, action can be:
                           -x                extract files from archive specified with -f
