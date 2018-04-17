@@ -1,5 +1,6 @@
 Things I want to study more.
 
+- chemistry
 - cryptocurrencies
 - electronics
 - Emacs
