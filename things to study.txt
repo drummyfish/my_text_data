@@ -28,3 +28,4 @@ Things I want to study more.
 - cryptography/security
 - RSA
 - Rust
+- biological taxonomy
