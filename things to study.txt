@@ -25,5 +25,6 @@ Things I want to study more.
 - Tor
 - Vulkan
 - neural networks
+- cryptography/security
 - RSA
 - Rust
