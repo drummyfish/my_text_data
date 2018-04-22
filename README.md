@@ -3,7 +3,7 @@ My Text Data
 
 These are text data I keep. The data may be regarding myself, things I'm interested in, they may be config files etc.
 
-The data are supposed to be factual, time-persistent and should still be mostly valid even if not updated and maintained. Short-term data are to be stored elsewhere.
+The data are supposed to be factual, mostly time-persistent and should still be mostly valid even if not updated for some time. Other kinds of data are to be stored elsewhere.
 
 By text data I mean:
 - mostly plain text
