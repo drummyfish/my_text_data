@@ -29,3 +29,4 @@ Things I want to study more.
 - RSA
 - Rust
 - biological taxonomy
+- mailing lists
