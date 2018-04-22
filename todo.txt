@@ -1,5 +1,6 @@
-Things I want to study more.
+Some things I plan to do.
 
+STUDY:
 - chemistry
 - cryptocurrencies
 - electronics
@@ -30,3 +31,6 @@ Things I want to study more.
 - Rust
 - biological taxonomy
 - mailing lists
+
+READ BOOKS:
+- H. G. Wells: The Country of the Blind
