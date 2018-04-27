@@ -8,6 +8,7 @@ STUDY:
 - Esperanto
 - FreeCAD
 - functional programming
+- polynoms (division, rings, ...)
 - fuzzy logic
 - general relativity
 - GNU Octave
@@ -31,6 +32,7 @@ STUDY:
 - Rust
 - biological taxonomy
 - mailing lists
+- Why do we remember the past but not the future?
 
 READ BOOKS:
 - H. G. Wells: The Country of the Blind
