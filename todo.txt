@@ -1,4 +1,4 @@
-Some things I plan to do.
+Some things I'm planning to do.
 
 STUDY:
 - chemistry
@@ -28,6 +28,7 @@ STUDY:
 - Spanish
 - spherical harmonics
 - Tor
+- typography
 - Vulkan
 - neural networks
 - cryptography/security
