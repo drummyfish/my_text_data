@@ -8,7 +8,8 @@ STUDY:
 - Esperanto
 - FreeCAD
 - functional programming
-- polynoms (division, rings, ...)
+- game theory
+- Godot engine
 - fuzzy logic
 - general relativity
 - GNU Octave
@@ -18,7 +19,9 @@ STUDY:
 - Lisp
 - logical programming
 - Lojban
+- Nash Equilibrium
 - node.js
+- polynoms (division, rings, ...)
 - quantum computing
 - quaternions
 - sigma calculus (OOP, "sigma kalkuk")
