@@ -37,3 +37,4 @@ These are the books I've read from start to finish.
 - Barbara Demick - Nothing to Envy
 - Glyn Moody - Rebel Code
 - David Kushner - Masters of Doom
+- Lawrence Lessig - Free Culture
