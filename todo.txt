@@ -1,6 +1,7 @@
 Some things I'm planning to do.
 
 STUDY:
+- BASH (https://github.com/jlevy/the-art-of-command-line)
 - chemistry
 - cryptocurrencies
 - electronics
