@@ -14,6 +14,7 @@ Only the differences between the languages are mentioned.
 | built-in types           | basic:<br>`bool`, `int`, `float`, `complex`, `str`<br>container:<br>`list`, `dict`, `tuple`, `set`, ...     | basic:<br>`null`, `bool`, `int`, `float`, `String`<br>container:<br>`Array`, `Dictionary`, `PoolByteArray`, ... <br>vector:<br>`Vector2`, `Vector3`, `Rect2`, `Transform2D`,`Transform`, `Basis`, `Quat`, `AABB`<br>engine:<br>`Color`, `NodePath`, `RID`, `Object`
 | basic constants        | `None`, `True`, `False` | `null`, `true`, `false` |
 | constructor name | `__init__` | `_init`
+| module importing | `import` keyword | `preload` keyword
 | `self` variable | only in class functions, has to be an explicit argument (e.g. `__init__(self)`) | is always implicitly present (in non-static functions)
 | variable definition    | `x = 5`                          | `var x = 5` <br> or to assign when the node is ready: <br> `onready var x = 5` <br> or to export to GUI interface and save: <br> `export var x = 5`
 | call superclass method | `super(SelfClass,self).method()` | `.method()` |
