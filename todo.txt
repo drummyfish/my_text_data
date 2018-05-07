@@ -12,6 +12,7 @@ STUDY:
 - game theory
 - Godot engine
 - fuzzy logic
+- game design patterns (ECS, Godot vs Unity architecture, ...)
 - general relativity
 - GNU Octave
 - Gödel's incompleteness theorems (formal)
