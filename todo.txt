@@ -3,6 +3,7 @@ Some things I'm planning to do.
 STUDY:
 - BASH (https://github.com/jlevy/the-art-of-command-line)
 - chemistry
+- color theory (gamut, sRGB, CIE 1931, HSL vs HSV, color wheels, ...)
 - cryptocurrencies
 - electronics
 - Emacs
