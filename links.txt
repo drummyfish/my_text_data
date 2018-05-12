@@ -16,7 +16,8 @@ free/libre stuff:
   - https://bitbucket.org/repo/all                              Bitbucket - search repositories
   - http://freegamer.blogspot.hr/                               Freegamer, a blog about libre games
   - https://opengameart.org/                                    Open Game Art, free game resources
-  - https://www.gnu.org/                                        GNU project, if you take freedom seriously
+  - https://www.gnu.org/                                        GNU project, if you take freedom seriously
+  - http://publicdomainreview.org                               awesome reviews of works in the public domain
 
 non-free/libre resources:
   - http://web.archive.org/                                     browse the archived Internet throughout the ages
