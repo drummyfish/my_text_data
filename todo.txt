@@ -40,6 +40,7 @@ STUDY:
 - biological taxonomy
 - mailing lists
 - Why do we remember the past but not the future?
+- Kalman filter
 
 READ BOOKS:
 - Peter Wayner: Free For All
