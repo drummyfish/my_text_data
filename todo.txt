@@ -42,7 +42,11 @@ STUDY:
 - Why do we remember the past but not the future?
 - Kalman filter
 
-READ BOOKS:
+READ:
 - Peter Wayner: Free For All
+- Countdown to Zero Day: Stuxnet and the Launch of the World's First Digital Weapon
 - Lion Kimbro: How to Make a Complete Map of Every Thought you Think
 - Herman Charles Merivale: My Experiences in a Lunatic Asylum
+
+WATCH:
+- Zero Days (documentary)
