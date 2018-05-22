@@ -4,7 +4,7 @@ This is a list of things I'd like to have, of all prices, in both English and Cz
 ORIGINAL, HIGHLY VALUED 
 (ORIGINÁLNÍ, VELMI CENĚNÉ)
 ==========================
-- Lemote Yeeloong netbook (https://en.wikipedia.org/wiki/Lemote, ~4500 KČ)
+- RYF certified laptop (notebook s certifikací RYF): https://www.fsf.org/resources/hw/endorsement/respects-your-freedom
 - Raspberry Pi starter kit (~2000 KČ): https://zakladni-desky.heureka.cz/raspberry-pi-3-model-b-plus-starter-kit/
 - old, used laptop (starý, použitý notebook)
 - musical keyboard (hudební klávesy)
