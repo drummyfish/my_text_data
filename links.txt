@@ -18,6 +18,7 @@ free/libre stuff:
   - https://opengameart.org/                                    Open Game Art, free game resources
   - https://www.gnu.org/                                        GNU project, if you take freedom seriously
   - http://publicdomainreview.org                               awesome reviews of works in the public domain
+  - http://publicdomainflix.com/index.html                      watch public domain movies online
 
 non-free/libre resources:
   - http://web.archive.org/                                     browse the archived Internet throughout the ages
