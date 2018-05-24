@@ -1,6 +1,7 @@
 BASICS:
   ";" after command supresses output of the result
   help cmd                     # writes help for cmd command
+  lookfor str                  # search documentation for str
   # comment
   v = [1, 3, 2]                # creates vector
   m = [1, 2; 3, 4]             # creates matrix
@@ -57,7 +58,9 @@ BASIC FUNCTIONS:
   chdir(pathstr)                   Changes directory to "pathstr", e.g. "~/tmp".
 
 ADVANCED FUNCTIONS:
+  arg(compl)                       Returns the argument of a complex number.
   conv(p,q)                        Multiplies two polynopmials represented by vectors of their coefficients.
+  columns(mat)                     Returns the number of columns of given matrix.
   deconv(p,q)                      Divides two polynopmials represented by vectors of their coefficients.
   disp(what)                       Displays "what" according to currently set format (see format function).
   det(mat)                         Computes determinant of "mat" matrix.
@@ -73,6 +76,7 @@ ADVANCED FUNCTIONS:
   ismember(val,set)                Checks if there is given value in given set (vector).
   linspace(from, to, num)          Creates a vector of num values from "from" to "to".
   logspace(from, to, num)          Creates a vector of num values from "from" to "to" in log space.
+  numel(what)                      Returns the number of elements (length) of given object.
   ones(x,y)                        Creates x * y matrix filled with 1s.                       
   plot(vals)                       Plots "vals" vector as a function.
   plot(xvals, yvals)               Plots points specified by "xvals" and "yvals" vectors.
@@ -84,6 +88,7 @@ ADVANCED FUNCTIONS:
   rand(x,y)                        Creates x * y matrix filled with random numbers from 0 to 1.
   roots(pol)                       Finds roots of polynomial specified by its coefficients.
   rot90(mat)                       Rotates matrix "mat" by 90 degrees.
+  rows(mat)                        Returns the number of rows of given matrix.
   setdiff(a,b)                     Creates a difference of "a" and "b" sets.
   sort(vec)                        Sorts vector "vec".
   union(a,b,)                      Creates an union of "a" and "b" sets.
