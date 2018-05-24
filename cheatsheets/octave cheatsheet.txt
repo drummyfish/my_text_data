@@ -6,6 +6,9 @@ BASICS:
   v = [1, 3, 2]                # creates vector
   m = [1, 2; 3, 4]             # creates matrix
   v(1)                         # indexing (1-based), gets the first element
+  v(2:5)                       # slice, get elements from 2 to 5
+  v(end + 1) = 0               # append 0 to vector
+  v(1:2:end)                   # select only odd elements of the vector
   m(1,1)                       # gets the matrix element at [1,1]
   m(1,:)                       # gets the first matrix row
   m(:,1)                       # gets the first matrix column 
@@ -91,6 +94,9 @@ ADVANCED FUNCTIONS:
   rows(mat)                        Returns the number of rows of given matrix.
   setdiff(a,b)                     Creates a difference of "a" and "b" sets.
   sort(vec)                        Sorts vector "vec".
+  soundc(s,freq)                   Plays sound from vector "s" with "freq" sampling frequency.
   union(a,b,)                      Creates an union of "a" and "b" sets.
   unique(vec)                      Removes duplicates from given vector.
+  wavread(filename)                Reads sound into vector from given file)
+  wavwrite(s,freq,filename)        Writes given audio vector to specified file.
   zeros(x,y)                       Creates x * y matrix filled with 0s.
