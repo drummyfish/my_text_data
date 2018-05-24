@@ -1,0 +1,91 @@
+BASICS:
+  ";" after command supresses output of the result
+  help cmd                     # writes help for cmd command
+  # comment
+  v = [1, 3, 2]                # creates vector
+  m = [1, 2; 3, 4]             # creates matrix
+  v(1)                         # indexing (1-based), gets the first element
+  m(1,1)                       # gets the matrix element at [1,1]
+  m(1,:)                       # gets the first matrix row
+  m(:,1)                       # gets the first matrix column 
+  1:10                         # creates a vector 1, 2, 3, ..., 10
+
+  for a = v, disp(a); end                                            # for loop, displays elements of vector "v"
+  a = 0; while a < 10, a += 1, end                                   # while loop
+  if a == 10, disp(1); elseif a == 2, disp(2); else, disp(3); endif  # if statement
+  function r = f(x), if x > 0, r = 1; else r = 0; endif, endfunction # function definition
+  f(3)                                                               # function call          
+  function [a,b] = f2(x), a = x; b = x; endfunction                  # function with multiple return values 
+
+OPERATORS:
+  +
+  -
+  *
+  /
+  \       # reverse division (for matrices)
+  ^
+  ./      # element-wise divide
+  .*      # element-wise multiply
+  .^      # element-wise power
+
+CONSTANT:
+  pi
+  e
+  i
+  inf
+  nan
+  realmax
+  realmin
+
+BASIC FUNCTIONS:
+  mod(x,y)                         Remainder, see also rem function.
+  ceil(x)
+  floor(x)
+  round(x)
+  sin(x)
+  cos(x)
+  tan(x)
+  acos(x)
+  asin(x)
+  atan(x)
+  sqrt(x)
+  exp(x)
+  abs(x)
+  log(x)                           Natural logarithm (base = e).
+  log10(x)                         Decadic logarithm (base = 10).
+  sign(x)
+  chdir(pathstr)                   Changes directory to "pathstr", e.g. "~/tmp".
+
+ADVANCED FUNCTIONS:
+  conv(p,q)                        Multiplies two polynopmials represented by vectors of their coefficients.
+  deconv(p,q)                      Divides two polynopmials represented by vectors of their coefficients.
+  disp(what)                       Displays "what" according to currently set format (see format function).
+  det(mat)                         Computes determinant of "mat" matrix.
+  dot(vec)                         Computes a dot product.
+  eps(x)                           Machine-dependent, return floating point distance from x to the next number.
+  eye(n)                           Creates n * n identity matrix.
+  fclose(file)                     Closes file with given descriptor.
+  fopen(filename,mode)             Opens file "filename" with given mode ('r','w' or 'a') and returns it descriptor.
+  fliplr(mat)                      Flips matrix "mat" horizontally.
+  flipud(mat)                      Flips matrix "mat" vertically.
+  intersection(a,b)                Creates an intersection of "a" and "b" sets.
+  inv(mat)                         Computes matrix inverse.
+  ismember(val,set)                Checks if there is given value in given set (vector).
+  linspace(from, to, num)          Creates a vector of num values from "from" to "to".
+  logspace(from, to, num)          Creates a vector of num values from "from" to "to" in log space.
+  ones(x,y)                        Creates x * y matrix filled with 1s.                       
+  plot(vals)                       Plots "vals" vector as a function.
+  plot(xvals, yvals)               Plots points specified by "xvals" and "yvals" vectors.
+  polyder(pol)                     Derivates polynomial represented by coefficients.
+  polyfit(xvals,yvals,deg)         Returns a polynomial of "deg" degree that best fits given data ("xvals", "yvals") - least square method.
+  polyint(pol)                     Integrates polynomial represented by coefficients.
+  polyout(vec,varstr)              Displays a polynomial based on coefficients ("vec") and variable ("varstr", e.g. "x").
+  polyval(vec,val)                 Evaluates a polynomial represented by coefficients ("vec") and variable value ("val").
+  rand(x,y)                        Creates x * y matrix filled with random numbers from 0 to 1.
+  roots(pol)                       Finds roots of polynomial specified by its coefficients.
+  rot90(mat)                       Rotates matrix "mat" by 90 degrees.
+  setdiff(a,b)                     Creates a difference of "a" and "b" sets.
+  sort(vec)                        Sorts vector "vec".
+  union(a,b,)                      Creates an union of "a" and "b" sets.
+  unique(vec)                      Removes duplicates from given vector.
+  zeros(x,y)                       Creates x * y matrix filled with 0s.
