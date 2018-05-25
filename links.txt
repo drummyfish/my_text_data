@@ -49,6 +49,7 @@ fun/interesting:
   - https://esolangs.org/wiki/Hello_world_program_in_esoteric_languages    Esolang Wiki, funny and original programming languages
   - http://www.ioccc.org/                                       international C obfuscation contest
   - https://en.wikipedia.org/wiki/Wikipedia:Unusual_articles    Wikipedia: list of unusual Articles 
+  - https://en.m.wikipedia.org/wiki/Wikipedia:Wikipedia_records Wikipedia records
   - https://en.wikipedia.org/wiki/List_of_lists_of_lists        Wikipedia: list of lists of lists
   - https://libraryofbabel.info/                                Library of Babel, all books that fit into 3200 chars
   - http://lolmythesis.com/                                     lol my thesis, students reword titles of their theses
