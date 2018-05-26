@@ -19,6 +19,7 @@ free/libre stuff:
   - https://www.gnu.org/                                        GNU project, if you take freedom seriously
   - http://publicdomainreview.org                               awesome reviews of works in the public domain
   - http://publicdomainflix.com/index.html                      watch public domain movies online
+  - http://wiki.kiwix.org/wiki/Main_Page                        wiki for Kiwix, a free offline Wikipedia reader
 
 non-free/libre resources:
   - http://web.archive.org/                                     browse the archived Internet throughout the ages
